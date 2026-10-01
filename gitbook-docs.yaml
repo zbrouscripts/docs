@@ -1,0 +1,68 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+
+site:
+  title: ZBrou Scripts
+  structure:
+    - type: section
+      key: documentation
+      title: Documentation
+      path: docs
+      default: true
+      children:
+        - type: space
+          key: es
+          title: '🇪🇸 Español'
+          path: es
+          default: true
+          content:
+            directory: ./es
+            language: es
+        - type: space
+          key: en
+          title: '🇬🇧 English'
+          path: en
+          content:
+            directory: ./en
+            language: en
+        - type: space
+          key: pt
+          title: '🇵🇹 Português'
+          path: pt
+          content:
+            directory: ./pt
+            language: pt
+        - type: space
+          key: fr
+          title: '🇫🇷 Français'
+          path: fr
+          content:
+            directory: ./fr
+            language: fr
+        - type: space
+          key: de
+          title: '🇩🇪 Deutsch'
+          path: de
+          content:
+            directory: ./de
+            language: de
+        - type: space
+          key: tr
+          title: '🇹🇷 Türkçe'
+          path: tr
+          content:
+            directory: ./tr
+            language: tr
+        - type: space
+          key: it
+          title: '🇮🇹 Italiano'
+          path: it
+          content:
+            directory: ./it
+            language: it
+        - type: space
+          key: pl
+          title: '🇵🇱 Polski'
+          path: pl
+          content:
+            directory: ./pl
+            language: pl
