@@ -19,6 +19,8 @@ Si eliges **Archivos de configuración**, las opciones del panel aparecen bloque
 
 Puedes abrir una **demo interactiva de Ajustes del script** con la misma estética del panel real. Puedes cambiar Classic/Liquid Glass, colores, switches, desplegables, bloquear el panel con Archivos de configuración y probar Restablecer predeterminado.
 
+La demo sigue la misma estructura del panel real: una sola pantalla con scroll, los bloques en el mismo orden y la barra de acciones fija abajo.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=es" %}
 
 [**Abrir la demo a pantalla completa →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=es)
