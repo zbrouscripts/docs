@@ -1,27 +1,29 @@
 # Konfiguration
 
-FraseKill kann auf zwei Arten konfiguriert werden: über das **visuelle Script-Einstellungen-Panel**, mit dem du die meisten Optionen aus `config.lua` und `config_server.lua` ohne Codeänderungen anpassen kannst, oder direkt in diesen Dateien.
-
-Einige private Einstellungen wie Webhooks und sensible Optionen bleiben ausschließlich in den Ressourcendateien.
+FraseKill kann über das **visuelle Script-Einstellungen-Panel** oder direkt in `config.lua` und `config_server.lua` konfiguriert werden.
 
 ## Visuelles Konfigurationspanel
-
-Das ist derselbe Panel-Typ wie in FraseKill Admin. Du kannst ihn hier ausprobieren, bevor du etwas auf deinem Server änderst.
 
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=de" %}
 
 [**Konfigurationspanel im Vollbild öffnen →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=de)
 
-{% hint style="info" %}
-Die Demo verbindet sich nicht mit FiveM, SQL oder Tebex und verändert keinen Server.
-{% endhint %}
+Das Panel deckt die meisten normalen Einstellungen ab. Private Optionen bleiben in den Ressourcendateien.
 
-## Über Dateien konfigurieren
+## Konfigurationsdateien
 
-- `config.lua` — Sprache, Aussehen, Befehle, Standardwerte, Animationen und visuelles Verhalten.
+- `config.lua` — Sprache, Aussehen, Befehle und Standardwerte.
 - `config_server.lua` — Zugriff, Administration, Tebex, Sicherheit und Serveroptionen.
 - `server/webhooks.lua` — Discord-Webhooks.
 
-{% hint style="info" %}
-Wenn du wenig Erfahrung hast, nutze das **visuelle Panel** für normale Einstellungen und bearbeite Dateien nur wenn nötig.
-{% endhint %}
+## Berechtigungen und Administration
+
+Füge den Haupt-Owner in `server.cfg` hinzu:
+
+```cfg
+add_ace identifier.license:DEINE_LICENSE zbrou.frasekill.admin allow
+```
+
+Wenn du deine License nicht kennst, nutze `/frasekilladmin`.
+
+Weitere Admins werden im Panel mit getrennten Berechtigungen erstellt. Admin-Rechte geben nicht automatisch Spielerzugriff auf FraseKill.

@@ -1,35 +1,29 @@
 # Configuration
 
-FraseKill can be configured in two ways: from the **visual Script settings panel**, which lets you change most options from `config.lua` and `config_server.lua` without editing code, or by editing those files directly.
-
-Some private options, such as webhooks and other sensitive settings, always stay in the resource files.
+FraseKill can be configured from the **visual Script settings panel** or directly from `config.lua` and `config_server.lua`.
 
 ## Visual configuration panel
-
-This is the same type of panel you will find inside FraseKill Admin. You can try it here before changing anything on your server.
 
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=en" %}
 
 [**Open the configuration panel full screen →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=en)
 
-{% hint style="info" %}
-The demo does not connect to FiveM, SQL or Tebex and never changes a server.
-{% endhint %}
+The panel covers most common settings without editing code. Private options stay in the resource files.
 
-## Configure from files
+## Configuration files
 
-### `config.lua`
+- `config.lua` — language, appearance, commands and default values.
+- `config_server.lua` — access, administration, Tebex, security and server options.
+- `server/webhooks.lua` — Discord webhooks.
 
-General settings such as language, appearance, commands, defaults, animations and visual behaviour.
+## Permissions and administration
 
-### `config_server.lua`
+Add the main owner in `server.cfg`:
 
-Server settings such as access, administration, Tebex, security and other internal options.
+```cfg
+add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
+```
 
-### `server/webhooks.lua`
+If you do not know your license, run `/frasekilladmin` and FraseKill will show the exact line.
 
-Discord webhook URLs, if you want to use logs.
-
-{% hint style="info" %}
-If you are not used to configuring scripts, the easiest option is to use the **visual panel** for normal settings and edit files only when needed.
-{% endhint %}
+Other administrators are created from the panel with separate permissions. Admin status does not automatically grant player access to FraseKill.

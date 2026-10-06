@@ -1,27 +1,29 @@
 # Configuração
 
-FraseKill pode ser configurado de duas formas: através do **painel visual das Definições do script**, que permite alterar a maioria das opções de `config.lua` e `config_server.lua` sem editar código, ou diretamente nesses ficheiros.
-
-Algumas opções privadas, como webhooks e definições sensíveis, ficam apenas nos ficheiros do recurso.
+FraseKill pode ser configurado através do **painel visual das Definições do script** ou diretamente em `config.lua` e `config_server.lua`.
 
 ## Painel visual de configuração
-
-Este é o mesmo tipo de painel disponível dentro do FraseKill Admin. Podes experimentá-lo aqui antes de alterar o teu servidor.
 
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pt" %}
 
 [**Ver painel de configuração em ecrã inteiro →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pt)
 
-{% hint style="info" %}
-A demo não se liga a FiveM, SQL ou Tebex e não guarda alterações no servidor.
-{% endhint %}
+O painel permite alterar a maioria das opções habituais sem editar código. As opções privadas ficam nos ficheiros do recurso.
 
-## Configurar através dos ficheiros
+## Ficheiros de configuração
 
-- `config.lua` — idioma, aparência, comandos, valores predefinidos, animações e comportamento visual.
+- `config.lua` — idioma, aparência, comandos e valores predefinidos.
 - `config_server.lua` — acessos, administração, Tebex, segurança e opções do servidor.
 - `server/webhooks.lua` — webhooks do Discord.
 
-{% hint style="info" %}
-Se não tens muita experiência, usa o **painel visual** para os ajustes normais e edita os ficheiros apenas quando necessário.
-{% endhint %}
+## Permissões e administração
+
+Adiciona o owner principal em `server.cfg`:
+
+```cfg
+add_ace identifier.license:TUA_LICENSE zbrou.frasekill.admin allow
+```
+
+Se não souberes a tua license, usa `/frasekilladmin`.
+
+Os restantes administradores são criados no painel com permissões separadas. Ser administrador não dá automaticamente acesso de jogador ao FraseKill.

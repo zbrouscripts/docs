@@ -1,27 +1,29 @@
 # Yapılandırma
 
-FraseKill iki şekilde yapılandırılabilir: **görsel Script ayarları panelinden**, yani `config.lua` ve `config_server.lua` içindeki çoğu ayarı kod düzenlemeden değiştirebilirsin, ya da bu dosyaları doğrudan düzenleyebilirsin.
-
-Webhooklar ve bazı hassas seçenekler gibi özel ayarlar yalnızca kaynak dosyalarında kalır.
+FraseKill, **görsel Script ayarları panelinden** veya doğrudan `config.lua` ve `config_server.lua` dosyalarından yapılandırılabilir.
 
 ## Görsel yapılandırma paneli
-
-Bu, FraseKill Admin içinde göreceğin panelin aynı yapısını kullanır. Sunucunda değişiklik yapmadan önce burada deneyebilirsin.
 
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=tr" %}
 
 [**Yapılandırma panelini tam ekran aç →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=tr)
 
-{% hint style="info" %}
-Demo FiveM, SQL veya Tebex'e bağlanmaz ve sunucuda hiçbir değişiklik yapmaz.
-{% endhint %}
+Panel çoğu normal ayarı kod düzenlemeden değiştirmeni sağlar. Özel ayarlar kaynak dosyalarında kalır.
 
-## Dosyalardan yapılandırma
+## Yapılandırma dosyaları
 
-- `config.lua` — dil, görünüm, komutlar, varsayılanlar, animasyonlar ve görsel davranış.
-- `config_server.lua` — erişim, yönetim, Tebex, güvenlik ve sunucu seçenekleri.
+- `config.lua` — dil, görünüm, komutlar ve varsayılan değerler.
+- `config_server.lua` — erişim, yönetim, Tebex, güvenlik ve sunucu ayarları.
 - `server/webhooks.lua` — Discord webhookları.
 
-{% hint style="info" %}
-Çok tecrübeli değilsen normal ayarlar için **görsel paneli** kullanman en kolay seçenektir.
-{% endhint %}
+## Yetkiler ve yönetim
+
+Ana owner'ı `server.cfg` içine ekle:
+
+```cfg
+add_ace identifier.license:LICENSE zbrou.frasekill.admin allow
+```
+
+License değerini bilmiyorsan `/frasekilladmin` kullan.
+
+Diğer adminler panelden ayrı yetkilerle oluşturulur. Admin olmak oyuncu olarak FraseKill erişimi vermez.
