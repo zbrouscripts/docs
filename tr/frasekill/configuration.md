@@ -13,6 +13,8 @@ Panelden dil, renkler, varsayılanlar, ölüm algılama, erişim, Tebex, kuralla
 
 Gerçek panelle aynı görsel stile sahip **etkileşimli Script ayarları demosunu** aç. Classic/Liquid Glass, renkler, switchler, menüler, dosya kilidi ve varsayılanlara dönüşü deneyebilirsin.
 
+Demo gerçek panel yapısını takip eder: tek bir kaydırılabilir ekran, aynı sıradaki bloklar ve altta sabit işlem çubuğu.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=tr" %}
 
 [**Tam ekran demoyu aç →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=tr)
