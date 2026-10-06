@@ -13,6 +13,18 @@ Permite alterar visualmente idioma, cores, valores predefinidos, deteção de mo
 
 Cada opção tem um `?` com uma explicação simples.
 
+## Experimenta o painel antes de configurar
+
+Abre uma **demo interativa das Definições do script** com o mesmo estilo visual do painel real. Podes testar Classic/Liquid Glass, cores, switches, listas, bloqueio por ficheiros e Restaurar predefinições.
+
+{% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pt" %}
+
+[**Abrir demo em ecrã inteiro →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pt)
+
+{% hint style="info" %}
+É apenas uma demo da documentação: não se liga a FiveM, SQL ou Tebex.
+{% endhint %}
+
 ## Ficheiros
 
 - `config.lua` — idioma, aparência, comandos, valores predefinidos, animações e comportamento visual.

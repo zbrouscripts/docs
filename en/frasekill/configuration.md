@@ -15,6 +15,18 @@ Every option has a `?` that explains what it does in simple language.
 
 If you choose **Configuration files**, the panel options are locked so it is clear that changes must be made in the files.
 
+## Try the panel before configuring it
+
+Open an **interactive Script settings demo** using the same visual style as the real panel. You can try Classic/Liquid Glass, colours, switches, dropdowns, Configuration files lock mode and Restore defaults.
+
+{% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=en" %}
+
+[**Open the full-screen demo →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=en)
+
+{% hint style="info" %}
+This is documentation-only: it does not connect to FiveM, SQL or Tebex and never changes a server.
+{% endhint %}
+
 ## Configuration files
 
 ### `config.lua`
