@@ -1,63 +1,38 @@
 # Script settings
 
-Open **FraseKill Admin → Script settings** to change common resource options without editing Lua. The panel is made for server owners: every setting has a `?` tooltip with a plain-language explanation.
+**Script settings** is the admin section where you can prepare FraseKill for your server without editing every option by hand.
 
-## Configuration mode
+It is split into a few clear groups so settings are easy to find.
 
-At the top, choose how you want to configure FraseKill:
+## Choose how you want to configure FraseKill
 
-- **Configuration files** — FraseKill uses `config.lua` and `config_server.lua`. The rest of the panel is locked and dimmed so it is obvious that it cannot be edited there.
-- **Administration panel** — supported settings can be changed and saved directly from the interface.
+At the top you can choose:
 
-Only the main owner can switch this mode. Switching modes does not delete player phrases or access grants.
+- **Configuration files** — changes are made in the resource files.
+- **Administration panel** — changes are made directly from this screen.
 
-## What you can change from the panel
+Only the main owner can change this mode.
 
-### Interface
-
-Default language, Classic/Liquid Glass theme, main commands and the three global menu colours.
-
-- **Detail colour** — active buttons, switches, selected slot and highlights.
-- **Background colour** — main menu background.
-- **Base colour** — cards, fields, inactive slots and inner blocks.
-
-All three colours have an individual reset icon that returns to the value defined in the configuration files.
-
-### FraseKill
-
-Character limit and the defaults used by new configurations: slot mode, phrase, enabled state, colours, size, glow, animations and killer-name appearance.
-
-**Fixed** keeps the selected slot. **Random** rotates through your valid slots so different kills can show different phrases.
-
-### Death detection
-
-Medical adapter, the stage that counts as a valid death, how FraseKill is displayed and the maximum display time. If you use a supported ambulance resource, **Auto** is normally the best adapter option.
-
-### Player access
-
-Access mode, jobs/groups and expiry notifications. Available modes are **Managed access**, **Managed access + Tebex** and **Custom check**.
-
-### Rules
-
-Rule visibility and basic moderation filters. Rules and blocked words are managed from their own admin sections and validated on the server.
-
-### Notifications
-
-Enable or disable logs and choose the name used in Discord notifications. Webhook URLs remain in private server files only.
+When **Configuration files** is selected, the rest of the panel is dimmed and locked.
 
 ## Restore defaults
 
-The global **Restore defaults** button is owner-only. It asks for confirmation, clears every saved override in **Script settings**, and returns the options to their original `config.lua` and `config_server.lua` values.
+If you have been testing settings and want to start again, press **Restore defaults**.
 
-It does not delete:
+This returns Script settings to their original values, but it does **not** delete:
 
-- player phrases or presets;
-- access grants or expiry dates;
-- rules or blocked words;
-- delegated administrators.
+- player phrases;
+- access grants;
+- rules;
+- blocked words;
+- administrators.
 
-It also keeps the current configuration mode. Changes that need a resource restart remain marked as pending.
+The main menu colours also have their own individual reset buttons.
 
-{% hint style="info" %}
-Secrets, webhook URLs and Lua callbacks are never exposed in the web panel. Configure them only in private server files.
-{% endhint %}
+## Sections
+
+- **Interface and appearance** — language, theme, logo and colours.
+- **FraseKill defaults** — how FraseKill looks at first.
+- **Access and Tebex** — who can use the script and how access is granted.
+- **Death detection** — when FraseKill should appear.
+- **Rules and notifications** — rules, filters and alerts.

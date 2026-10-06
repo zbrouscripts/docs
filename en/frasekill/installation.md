@@ -1,38 +1,59 @@
 # Installation
 
-## Requirements
+## What you need
 
-- FiveM server.
-- `oxmysql` running before FraseKill.
-- ESX, QBCore or Qbox are optional; standalone is supported.
-- `zbrou_utils` is **not** required.
+- A FiveM server.
+- The `oxmysql` resource on your server.
+- ESX, QBCore and Qbox are optional. FraseKill can also run without a framework.
+- `zbrou_utils` is not required.
 
-## Install
+## Add FraseKill to your server
 
-1. Put the folder in your resources directory and keep the resource name `zbrou_frasekill`.
-2. Add:
+1. Put the folder in your resources and keep the name:
+
+```text
+zbrou_frasekill
+```
+
+2. In `server.cfg`, make sure `oxmysql` is listed before FraseKill:
 
 ```cfg
 ensure oxmysql
 ensure zbrou_frasekill
 ```
 
-3. Leave `Config.Storage.AutoCreate = true` for automatic table creation/migrations, or run `sql/install.sql` manually if you manage SQL yourself.
-4. Restart the server/resource and reconnect.
+3. The required SQL is prepared automatically the first time FraseKill starts. An `sql/install.sql` file is also included if you prefer to prepare it manually.
 
-## First owner
+4. Restart the resource or server.
 
-The only ACE used by FraseKill is the owner/admin ACE:
+## Give the owner access
+
+FraseKill uses one ACE for the main owner:
 
 ```cfg
 add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
 ```
 
-You can also run `/frasekilladmin` without permission: FraseKill shows the exact line for your license. Restart after changing ACE permissions.
+If you run `/frasekilladmin` without permission, FraseKill shows the exact line you need to copy.
 
-## First checks
+## Test FraseKill while setting up your server
 
-- `/frasekill` opens the editor only if the player has access.
-- `/frasekilladmin` opens the admin panel for the owner or delegated admins.
-- `/frasekillstatus` shows diagnostics to administrators.
-- `/frasekilltest` is disabled by default and should only be enabled on a test server.
+`/frasekilltest` is disabled in the public version.
+
+If you are setting up the server on your own and want to use it, open `config.lua`, find:
+
+```lua
+Config.Developer = {
+    Enabled = false,
+    Command = 'frasekilltest',
+    RequireAdmin = true,
+}
+```
+
+and change only:
+
+```lua
+Enabled = true
+```
+
+Keep `RequireAdmin = true` so only the owner/admin can run the test. Set `Enabled = false` again when you finish.

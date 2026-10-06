@@ -1,63 +1,38 @@
 # Ajustes del script
 
-Abre **FraseKill Admin → Ajustes del script** para cambiar las opciones comunes del recurso sin tener que editar Lua. El panel está pensado para owners de servidor: cada ajuste tiene un `?` con una explicación sencilla.
+**Ajustes del script** es la parte del panel donde puedes preparar FraseKill para tu servidor sin tener que editar cada opción a mano en los archivos.
 
-## Modo de configuración
+Está dividido en pocos bloques para que sea fácil encontrar lo que buscas.
 
-En la parte superior eliges cómo quieres configurar FraseKill:
+## Elegir cómo quieres configurar el script
 
-- **Archivos de configuración** — FraseKill usa `config.lua` y `config_server.lua`. El resto del panel queda bloqueado y oscurecido para dejar claro que no se puede editar desde ahí.
-- **Panel de administración** — los ajustes compatibles se pueden cambiar y guardar directamente desde la interfaz.
+En la parte superior puedes elegir:
 
-Solo el owner principal puede cambiar este modo. Cambiar de modo no borra tus frases ni los accesos de los jugadores.
+- **Archivos de configuración** — los cambios se hacen desde los archivos del recurso.
+- **Panel de administración** — los cambios se hacen directamente desde esta pantalla.
 
-## Qué puedes cambiar desde el panel
+Solo el owner principal puede cambiar este modo.
 
-### Interfaz
-
-Idioma por defecto, tema Classic/Liquid Glass, comandos principales y los tres colores globales del menú.
-
-- **Color de detalles** — botones activos, switches, slot seleccionado y resaltados.
-- **Color del fondo** — fondo principal del menú.
-- **Color base** — tarjetas, campos, slots inactivos y bloques interiores.
-
-Los tres colores tienen un icono de reset individual para volver al valor definido en los archivos de configuración.
-
-### FraseKill
-
-Límite de caracteres y valores predeterminados que recibirán las nuevas configuraciones: modo de slot, frase, activación, colores, tamaño, brillo, animaciones y apariencia del nombre del killer.
-
-**Fijo** mantiene el slot elegido. **Aleatorio** va cambiando entre tus slots válidos para que distintas kills puedan mostrar frases diferentes.
-
-### Detección de muerte
-
-Adaptador médico, momento en el que se considera válida la muerte, forma de mostrar la FraseKill y tiempo máximo en pantalla. Si usas un ambulance compatible, lo normal es dejar el adaptador en **Auto**.
-
-### Acceso de jugadores
-
-Modo de acceso, jobs/grupos y avisos de caducidad. Los modos disponibles son **Acceso gestionado**, **Acceso gestionado + Tebex** y **Comprobación personalizada**.
-
-### Normas
-
-Visibilidad de las normas y filtros básicos de moderación. Las normas y palabras bloqueadas se gestionan desde sus apartados del panel y se validan en el servidor.
-
-### Notificaciones
-
-Activa o desactiva los logs y cambia el nombre que aparecerá en los avisos de Discord. Las URLs de webhook siguen estando únicamente en los archivos privados del servidor.
+Cuando usas **Archivos de configuración**, el resto de opciones del panel aparecen oscurecidas y bloqueadas.
 
 ## Restablecer predeterminado
 
-El botón global **Restablecer predeterminado** está disponible solo para el owner. Pide confirmación y elimina todos los cambios guardados en **Ajustes del script**, devolviendo las opciones a los valores originales de `config.lua` y `config_server.lua`.
+Si has estado probando opciones y quieres volver al principio, pulsa **Restablecer predeterminado**.
 
-No borra:
+Esto devuelve los ajustes del script a sus valores originales, pero **no borra**:
 
-- frases o presets de jugadores;
-- accesos o caducidades;
-- normas o palabras bloqueadas;
-- administradores delegados.
+- las frases de los jugadores;
+- los accesos;
+- las normas;
+- las palabras bloqueadas;
+- los administradores.
 
-También mantiene el modo de configuración actual. Los cambios que necesitan reiniciar el recurso quedan indicados como pendientes.
+Los colores principales del menú también tienen su propio botón de reset individual.
 
-{% hint style="info" %}
-Los secretos, URLs de webhook y callbacks Lua no se muestran en el panel web. Se configuran siempre en los archivos privados del servidor.
-{% endhint %}
+## Apartados
+
+- **Interfaz y apariencia** — idioma, tema, logo y colores.
+- **FraseKill y valores predeterminados** — cómo se verá FraseKill de primeras.
+- **Acceso y Tebex** — quién puede usar el script y cómo dar acceso.
+- **Detección de muerte** — cuándo debe aparecer FraseKill.
+- **Normas y notificaciones** — reglas, filtros y avisos.

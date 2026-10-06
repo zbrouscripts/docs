@@ -1,37 +1,34 @@
 # Configuración
 
-FraseKill tiene dos archivos de configuración y un panel visual opcional de **Ajustes del script**.
+FraseKill se puede configurar de dos formas:
 
-## `config.lua`
+- **Desde el panel de administración**, que es la opción más cómoda si no quieres tocar archivos.
+- **Desde los archivos de configuración**, si prefieres tener todo escrito en Lua.
 
-Ajustes compartidos y no secretos: comandos, idioma por defecto, apariencia del menú, valores de FraseKill, fuentes, animaciones, visualización y detección médica. No pongas tokens ni webhooks aquí.
+Puedes elegir el modo desde **FraseKill Admin → Ajustes del script**.
 
-Valores importantes:
+## Panel de administración
 
-```lua
-Config.Locale = 'en'
-Config.UI.Theme = 'classic'
-Config.UI.AccentColor = '#0e58d8'
-Config.UI.BackgroundColor = '#15181e'
-Config.UI.BaseColor = '#1a1e25'
-Config.DefaultSlotMode = 'fixed'
-Config.MaxCharacters = 70
-Config.Death.Adapter = 'auto'
-```
+El panel permite cambiar de forma visual la mayoría de ajustes habituales: idioma, colores, valores predeterminados de FraseKill, detección de muerte, accesos, Tebex, normas y notificaciones.
 
-`fixed` mantiene el slot elegido. `random` va cambiando entre los slots válidos habilitados para que distintas kills puedan mostrar frases diferentes.
+Cada opción tiene un símbolo `?` que explica qué hace sin necesidad de conocer programación.
 
-## `config_server.lua`
+Si eliges **Archivos de configuración**, las opciones del panel aparecen bloqueadas para dejar claro que los cambios deben hacerse en los archivos.
 
-Ajustes privados/server-side: SQL, almacenamiento, jobs/grupos, acceso, ACE del owner, admins delegados, nombres, moderación, seguridad, Tebex, logs, diagnósticos y callbacks privados.
+## Archivos de configuración
 
-No muevas secretos a archivos visibles por el cliente. Las URLs de Discord van en `server/webhooks.lua`.
+### `config.lua`
 
-## Fuente de configuración
+Aquí están los ajustes generales que no contienen información privada: idioma, apariencia, comandos, valores predeterminados, animaciones y comportamiento visual.
 
-El owner puede elegir **Archivos de configuración** o **Panel de administración**.
+### `config_server.lua`
 
-- **Archivos de configuración**: mandan `config.lua` y `config_server.lua`; los controles del panel quedan bloqueados. Los valores del panel se conservan solo como borrador.
-- **Panel de administración**: los ajustes seguros compatibles se aplican desde los overrides guardados del panel.
+Aquí están los ajustes que solo debe leer el servidor: accesos, administración, Tebex, seguridad y otras opciones internas.
 
-Callbacks, secretos, webhooks y otros ajustes avanzados siguen estando en archivos aunque uses el panel.
+### `server/webhooks.lua`
+
+Aquí puedes poner los webhooks de Discord si quieres usar logs.
+
+{% hint style="info" %}
+Si no tienes mucha experiencia configurando scripts, usa el **Panel de administración** para los ajustes normales y toca los archivos solo cuando la documentación te lo indique.
+{% endhint %}
