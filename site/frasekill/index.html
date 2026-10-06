@@ -1,220 +1,477 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>ZBrou FraseKill — Interactive Script Settings Demo</title>
+<title>ZBrou FraseKill — Script Settings Demo</title>
 <style>
 :root{
-  --accent:#0e58d8;--accent-rgb:14,88,216;
-  --menu:#15181e;--menu-rgb:21,24,30;
-  --base:#1a1e25;--base-rgb:26,30,37;
-  --base-hover:#202630;
-  --text:#eef2f7;--muted:#8f99a8;--muted2:#6f7987;
-  --line:#303742;--line-soft:#272e38;--input:#11151b;
-  --danger:#e0525e;--success:#62c985;
+  --accent:#0e58d8;
+  --accent-rgb:14,88,216;
+  --background:#15181e;
+  --background-rgb:21,24,30;
+  --base:#1a1e25;
+  --base-rgb:26,30,37;
+  --input:#10141a;
+  --line:#2d3540;
+  --line-soft:#262d36;
+  --text:#f2f5f9;
+  --muted:#8d98a7;
+  --muted2:#6f7a88;
+  --danger:#ee6a78;
+  --success:#19cf77;
 }
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#090b0f;color:var(--text)}
-body{min-height:100vh;overflow:auto}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 12% 10%,rgba(255,255,255,.035),transparent 32%),#090b0f}
-body.liquid:before{background:radial-gradient(circle at 18% 12%,rgba(var(--accent-rgb),.18),transparent 34%),radial-gradient(circle at 88% 86%,rgba(var(--accent-rgb),.09),transparent 32%),#090b0f}
-.demo-shell{min-height:100vh;display:grid;place-items:center;padding:28px}
-.admin-card{width:min(1340px,97vw);height:min(860px,94vh);display:grid;grid-template-rows:auto auto 1fr;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:rgb(var(--menu-rgb));box-shadow:0 28px 85px rgba(0,0,0,.48)}
-body.liquid .admin-card{background:linear-gradient(145deg,rgba(var(--menu-rgb),.84),rgba(7,9,13,.76));border-color:rgba(255,255,255,.13);backdrop-filter:blur(26px) saturate(1.16);-webkit-backdrop-filter:blur(26px) saturate(1.16);box-shadow:0 32px 90px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.055)}
-.admin-header{display:flex;align-items:center;justify-content:space-between;padding:17px 22px;border-bottom:1px solid var(--line-soft)}
-.brand{display:flex;align-items:center;gap:12px}.brand img{width:34px;height:34px;object-fit:contain;border-radius:9px}.brand strong{display:block;font-size:15px;letter-spacing:.1px}.brand small{display:block;margin-top:3px;color:#818c9a;font-size:11px;font-weight:650}
-.demo-pill{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid rgba(var(--accent-rgb),.28);border-radius:999px;background:rgba(var(--accent-rgb),.09);color:#cbd8f4;font-size:11px;font-weight:800}.demo-pill:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px rgba(var(--accent-rgb),.9)}
-.header-actions{display:flex;align-items:center;gap:10px}.icon-btn{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:var(--base);color:#94a0af;display:grid;place-items:center;font-size:18px;cursor:pointer}.icon-btn:hover{color:white;border-color:rgba(var(--accent-rgb),.55)}
-.admin-tabs{display:flex;gap:6px;padding:9px 16px;border-bottom:1px solid var(--line-soft);overflow-x:auto;white-space:nowrap}.admin-tab{height:38px;padding:0 16px;border:0;border-radius:9px;background:transparent;color:#87919f;font-size:13px;font-weight:850;cursor:pointer}.admin-tab:hover{color:#cbd2dc;background:rgba(255,255,255,.025)}.admin-tab.active{background:var(--base);color:#fff;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.14)}
-.admin-body{min-height:0;display:grid;grid-template-columns:260px 1fr;overflow:hidden}
-.sidebar{padding:16px;border-right:1px solid var(--line-soft);overflow:auto;background:rgba(0,0,0,.035)}.side-title{padding:4px 5px 10px;color:#6f7a89;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.side-btn{width:100%;display:flex;align-items:center;gap:10px;padding:11px 12px;border:0;border-radius:10px;background:transparent;color:#8d98a7;font-size:12.5px;font-weight:760;text-align:left;cursor:pointer}.side-btn:hover{background:rgba(255,255,255,.025);color:#dce2eb}.side-btn.active{background:rgba(var(--accent-rgb),.12);color:white;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.25)}.side-dot{width:8px;height:8px;border-radius:50%;background:#3e4651}.side-btn.active .side-dot{background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-rgb),.6)}
-.side-note{margin-top:18px;padding:12px;border:1px solid var(--line-soft);border-radius:11px;background:var(--base);color:#7f8a99;font-size:10.5px;line-height:1.5}
-.content{min-width:0;overflow:auto;padding:20px 22px 26px}.settings-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:16px}.settings-head h1{font-size:24px;margin:0 0 6px;letter-spacing:-.03em}.settings-head p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.55;max-width:720px}
-.toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.btn{height:40px;padding:0 13px;border-radius:9px;border:1px solid var(--line);background:var(--base);color:#cbd2dc;font-weight:800;font-size:12px;cursor:pointer}.btn:hover{border-color:rgba(var(--accent-rgb),.5);color:white}.btn.primary{border-color:var(--accent);background:var(--accent);color:white}.btn.danger{border-color:rgba(224,82,94,.35);color:#f09ba3;background:rgba(224,82,94,.07)}.btn svg{width:15px;height:15px;vertical-align:-3px;margin-right:6px;fill:currentColor}
-.panel{display:grid;gap:14px;padding:17px 18px;border:1px solid var(--line-soft);border-radius:14px;background:var(--base);margin-bottom:14px}
-body.liquid .panel,body.liquid .section{background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(var(--base-rgb),.58));border-color:rgba(255,255,255,.11)}
-.panel-title{display:flex;justify-content:space-between;gap:16px}.panel-title strong{font-size:15px}.panel-title small{display:block;margin-top:4px;color:var(--muted);font-size:12px;line-height:1.45}.source-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.source-card{display:grid;grid-template-columns:44px 1fr 18px;align-items:center;gap:12px;padding:14px 15px;border:1px solid var(--line-soft);border-radius:12px;background:rgb(var(--menu-rgb));cursor:pointer}.source-card:hover{border-color:#3b4654}.source-card.active{border-color:rgba(var(--accent-rgb),.72);background:rgba(var(--accent-rgb),.09);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.06)}.source-icon{width:44px;height:44px;border-radius:11px;background:var(--base);display:grid;place-items:center;color:#9ba7b5;font-size:20px}.source-card.active .source-icon{background:rgba(var(--accent-rgb),.18);color:white}.source-card strong{font-size:13px}.source-card small{display:block;margin-top:4px;color:var(--muted);font-size:11px;line-height:1.4}.radio{width:18px;height:18px;border:2px solid #4c5664;border-radius:50%;position:relative}.source-card.active .radio{border-color:var(--accent)}.source-card.active .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent)}
-.search-row{display:flex;align-items:center;gap:10px;margin:4px 0 14px}.search{width:min(460px,100%);height:43px;padding:0 13px;border:1px solid var(--line);border-radius:9px;background:var(--input);color:#fff;outline:none;font-size:13px}.search:focus{border-color:rgba(var(--accent-rgb),.7);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.08)}.search-count{color:var(--muted);font-size:11px}
-.lock-notice{display:none;margin-bottom:14px;padding:13px 15px;border:1px solid #343d49;border-radius:11px;background:rgba(4,7,11,.72);color:#aeb7c5;font-size:12.5px;font-weight:700;line-height:1.45}.locked .lock-notice{display:block}.sections{display:grid;gap:14px;position:relative}.locked .sections{opacity:.28;filter:grayscale(.5) brightness(.72);pointer-events:none;user-select:none}
-.section{border:1px solid var(--line-soft);border-radius:14px;background:var(--base);overflow:visible}.section-header{padding:16px 18px 13px;border-bottom:1px solid var(--line-soft)}.section-header h2{margin:0 0 5px;font-size:17px;letter-spacing:-.015em}.section-header p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.45}.fields{display:grid;padding:0 18px}.field{display:grid;grid-template-columns:minmax(230px,1fr) minmax(300px,460px);align-items:center;gap:24px;padding:15px 0;border-bottom:1px solid var(--line-soft)}.field:last-child{border-bottom:0}.field-info{min-width:0}.field-title{display:flex;align-items:center;gap:8px}.field-title strong{font-size:14px}.help{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;border:1px solid #46505e;color:#7f8a99;font-size:10px;font-weight:900;cursor:help;position:relative}.help:hover{border-color:var(--accent);color:white;background:rgba(var(--accent-rgb),.12)}.field-info small{display:block;margin-top:5px;color:#798492;font-size:10.8px;line-height:1.45}.control{justify-self:stretch}.input,.select{width:100%;height:43px;padding:0 11px;border:1px solid var(--line);border-radius:9px;background:var(--input);color:#eaf0f7;outline:none;font-size:12.5px}.input:focus,.select:focus{border-color:rgba(var(--accent-rgb),.7)}.switch{justify-self:end;width:48px;height:27px;border-radius:99px;background:#343c47;position:relative;cursor:pointer;transition:.16s}.switch:before{content:"";position:absolute;width:21px;height:21px;left:3px;top:3px;border-radius:50%;background:#f6f8fb;box-shadow:0 1px 5px rgba(0,0,0,.4);transition:.16s}.switch.on{background:var(--accent)}.switch.on:before{transform:translateX(21px)}
-.color-control{display:flex;align-items:center;justify-content:flex-end;gap:9px}.color-control input{width:72px;height:43px;padding:5px 7px;border:1px solid var(--line);border-radius:9px;background:var(--input);cursor:pointer}.color-code{min-width:78px;text-align:right;font:700 12px/1.2 Consolas,monospace;color:#aeb8c6}.reset-color{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;background:var(--input);color:#9da8b7;display:grid;place-items:center;cursor:pointer;transition:.15s}.reset-color:hover{color:white;border-color:rgba(var(--accent-rgb),.65);background:rgba(var(--accent-rgb),.12);transform:rotate(-18deg)}.reset-color svg{width:17px;height:17px;fill:currentColor}
-.preview-strip{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;margin-top:14px;padding:14px 16px;border:1px solid var(--line-soft);border-radius:12px;background:rgb(var(--menu-rgb))}.preview-strip small{display:block;color:var(--muted);font-size:10.5px;margin-top:4px}.mini-ui{display:flex;gap:7px}.mini-chip{height:28px;padding:0 10px;display:grid;place-items:center;border-radius:8px;background:var(--base);color:#a8b2bf;font-size:10px;font-weight:800}.mini-chip.active{background:var(--accent);color:white}
-.toast{position:fixed;right:24px;bottom:24px;padding:12px 15px;border:1px solid rgba(var(--accent-rgb),.4);border-radius:11px;background:rgba(12,15,20,.96);box-shadow:0 18px 50px rgba(0,0,0,.4);font-size:12px;font-weight:750;transform:translateY(18px);opacity:0;pointer-events:none;transition:.2s}.toast.show{transform:translateY(0);opacity:1}
-.modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.62);z-index:50;padding:20px}.modal.open{display:grid}.modal-card{width:min(460px,94vw);padding:20px;border:1px solid var(--line);border-radius:16px;background:rgb(var(--menu-rgb));box-shadow:0 25px 80px rgba(0,0,0,.6)}.modal-card h3{margin:0 0 8px}.modal-card p{margin:0;color:var(--muted);font-size:12.5px;line-height:1.55}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:18px}
-.demo-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:15px;color:#6f7987;font-size:10.5px}.demo-footer a{color:#8faeea;text-decoration:none}.demo-footer a:hover{text-decoration:underline}
-@media(max-width:980px){.admin-body{grid-template-columns:1fr}.sidebar{display:none}.admin-card{height:auto;min-height:92vh}.field{grid-template-columns:1fr;gap:9px}.switch{justify-self:start}.source-cards{grid-template-columns:1fr}.content{overflow:visible}.demo-shell{padding:10px}}
-@media(max-width:620px){.settings-head{display:grid}.toolbar{justify-content:stretch}.toolbar .btn{flex:1}.field{padding:14px 0}.color-control{justify-content:flex-start}.preview-strip{grid-template-columns:1fr}.admin-header{padding:14px}.demo-pill{display:none}}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#080a0e;color:var(--text)}
+body{min-height:100vh;background:
+  radial-gradient(circle at 18% 10%,rgba(var(--accent-rgb),.06),transparent 30%),
+  linear-gradient(#0a0d12,#080a0e)}
+body.liquid{background:
+  radial-gradient(circle at 16% 6%,rgba(var(--accent-rgb),.16),transparent 35%),
+  radial-gradient(circle at 86% 84%,rgba(var(--accent-rgb),.07),transparent 30%),
+  #080a0e}
+button,input,select{font:inherit}
+.demo-wrap{min-height:100vh;display:grid;place-items:center;padding:14px}
+.admin{
+  width:min(1340px,98vw);
+  height:min(860px,95vh);
+  display:grid;
+  grid-template-rows:auto auto 1fr auto;
+  overflow:hidden;
+  border:1px solid #2e3640;
+  border-radius:18px;
+  background:rgb(var(--background-rgb));
+  box-shadow:0 34px 95px rgba(0,0,0,.52)
+}
+body.liquid .admin{
+  background:linear-gradient(145deg,rgba(var(--background-rgb),.88),rgba(8,11,16,.82));
+  border-color:rgba(255,255,255,.13);
+  backdrop-filter:blur(26px) saturate(1.14);
+  -webkit-backdrop-filter:blur(26px) saturate(1.14);
+  box-shadow:0 36px 100px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.05)
+}
+.header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 22px;border-bottom:1px solid var(--line-soft)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:42px;height:42px;object-fit:contain}
+.brand-title{font-size:22px;font-weight:900;line-height:1;letter-spacing:-.03em}
+.brand-sub{margin-top:5px;color:#76808d;font-size:11px;font-weight:700}
+.header-actions{display:flex;align-items:center;gap:10px}
+.header-btn{height:40px;padding:0 17px;border:1px solid var(--line);border-radius:10px;background:#11161d;color:#d8dee7;font-size:12px;font-weight:850;cursor:default}
+.close-btn{width:40px;padding:0;font-size:19px}
+.tabs{display:flex;align-items:center;gap:5px;padding:9px 20px;border-bottom:1px solid var(--line-soft);overflow-x:auto}
+.tab{height:39px;padding:0 13px;border:0;border-radius:9px;background:transparent;color:#7f8997;font-size:12px;font-weight:850;white-space:nowrap}
+.tab.active{background:#222a35;color:white}
+.viewport{min-height:0;overflow:auto;scrollbar-color:#394352 transparent;scrollbar-width:thin}
+.viewport::-webkit-scrollbar{width:7px}
+.viewport::-webkit-scrollbar-thumb{background:#394352;border-radius:99px}
+.content{padding:22px 22px 120px}
+.page-title{margin:0 0 4px;font-size:27px;line-height:1.1;letter-spacing:-.04em}
+.page-sub{margin:0 0 18px;color:var(--muted);font-size:12.5px}
+.card{margin-bottom:16px;border:1px solid var(--line);border-radius:14px;background:rgb(var(--base-rgb));overflow:hidden}
+body.liquid .card{background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(var(--base-rgb),.72));border-color:rgba(255,255,255,.11)}
+.card-pad{padding:17px 18px}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.card-head h2{margin:0;font-size:16px;line-height:1.2;letter-spacing:-.015em}
+.card-head p{margin:5px 0 0;color:var(--muted);font-size:11.5px;line-height:1.45}
+.help{width:20px;height:20px;flex:0 0 20px;border:1px solid #44505f;border-radius:50%;display:grid;place-items:center;color:#8190a0;font-size:10px;font-weight:900;cursor:help}
+.help:hover{border-color:var(--accent);color:white;background:rgba(var(--accent-rgb),.12)}
+.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.mode{
+  display:grid;grid-template-columns:46px 1fr 20px;align-items:center;gap:13px;
+  min-height:77px;padding:12px 15px;border:1px solid #303844;border-radius:12px;background:#161b22;cursor:pointer
+}
+.mode.active{border-color:var(--accent);background:rgba(var(--accent-rgb),.115)}
+.mode-icon{width:46px;height:46px;border-radius:11px;background:#202630;color:#a2aebc;display:grid;place-items:center;font-size:21px;font-weight:900}
+.mode.active .mode-icon{background:rgba(var(--accent-rgb),.28);color:#dfeaff}
+.mode strong{font-size:13px}
+.mode small{display:block;margin-top:3px;color:var(--muted);font-size:10.8px;line-height:1.35}
+.radio{width:18px;height:18px;border:2px solid #556171;border-radius:50%;position:relative}
+.mode.active .radio{border-color:var(--accent)}
+.mode.active .radio:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent)}
+.files-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.file-card{display:grid;grid-template-columns:1fr 20px;align-items:center;gap:12px;padding:12px 13px;border:1px solid #303844;border-radius:10px;background:#171c23}
+.file-card strong{display:block;font-size:11.5px}
+.file-card code{display:block;margin-top:3px;color:#8e99a8;font-size:10px}
+.search-row{display:grid;grid-template-columns:minmax(300px,460px) 1fr;align-items:center;gap:12px;margin:1px 0 16px}
+.search{height:44px;border:1px solid var(--line);border-radius:10px;background:var(--input);color:white;padding:0 12px;outline:none;font-size:12.5px}
+.search:focus{border-color:rgba(var(--accent-rgb),.72);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.08)}
+.search-hint{color:#7d8897;font-size:11px}
+.lock-banner{display:none;margin:-2px 0 16px;padding:12px 14px;border:1px solid #303844;border-radius:10px;background:#11161c;color:#97a2b0;font-size:11.5px;font-weight:700}
+.locked .lock-banner{display:block}
+.settings-list{display:grid;gap:16px;position:relative}
+.locked .settings-list{opacity:.27;filter:grayscale(.4) brightness(.78);pointer-events:none;user-select:none}
+.setting-section{border:1px solid var(--line);border-radius:14px;background:rgb(var(--base-rgb));overflow:hidden}
+body.liquid .setting-section{background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(var(--base-rgb),.72));border-color:rgba(255,255,255,.11)}
+.section-head{padding:16px 17px 13px;border-bottom:1px solid var(--line-soft)}
+.section-head h3{margin:0;font-size:16px}
+.section-head p{margin:5px 0 0;color:#80a3d9;font-size:11.5px}
+.fields{padding:0 17px}
+.field{display:grid;grid-template-columns:minmax(260px,1fr) minmax(320px,460px);align-items:center;gap:26px;padding:14px 0;border-bottom:1px solid var(--line-soft)}
+.field:last-child{border-bottom:0}
+.field-info{min-width:0}
+.field-title{display:flex;align-items:center;gap:8px}
+.field-title strong{font-size:13.5px}
+.field-desc{display:block;margin-top:5px;color:#74808f;font-size:10.5px;line-height:1.35}
+.restart{display:block;margin-top:6px;color:#7394c6;font-size:10px}
+.control{min-width:0;justify-self:stretch}
+.input,.select{width:100%;height:43px;padding:0 12px;border:1px solid #323b47;border-radius:10px;background:var(--input);color:#f3f6fa;outline:none;font-size:12px}
+.input:focus,.select:focus{border-color:rgba(var(--accent-rgb),.75)}
+.switch{justify-self:end;width:46px;height:26px;border-radius:99px;background:#394250;position:relative;cursor:pointer}
+.switch:before{content:"";position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.35);transition:.15s}
+.switch.on{background:var(--accent)}
+.switch.on:before{transform:translateX(20px)}
+.color-control{display:flex;align-items:center;justify-content:flex-end;gap:9px}
+.color-control input[type=color]{width:72px;height:43px;padding:5px 7px;border:1px solid #323b47;border-radius:10px;background:var(--input);cursor:pointer}
+.color-code{min-width:76px;text-align:right;color:#9ca7b5;font:700 11px Consolas,monospace}
+.reset-color{width:35px;height:35px;border:1px solid #323b47;border-radius:9px;background:var(--input);color:#9aa6b5;display:grid;place-items:center;cursor:pointer}
+.reset-color:hover{border-color:rgba(var(--accent-rgb),.7);color:white;background:rgba(var(--accent-rgb),.1)}
+.reset-color svg{width:16px;height:16px;fill:currentColor}
+.footerbar{display:flex;align-items:center;justify-content:flex-end;gap:9px;padding:13px 21px;border-top:1px solid var(--line-soft);background:rgba(var(--background-rgb),.98)}
+body.liquid .footerbar{background:rgba(var(--background-rgb),.78);backdrop-filter:blur(20px)}
+.btn{height:40px;padding:0 15px;border:1px solid #323b47;border-radius:10px;background:#151a21;color:#d1d8e2;font-size:11.5px;font-weight:850;cursor:pointer}
+.btn:hover{border-color:#455263;color:white}
+.btn.primary{border-color:var(--accent);background:var(--accent);color:white}
+.btn.danger{border-color:rgba(238,106,120,.32);background:rgba(238,106,120,.055);color:#ff8794}
+.toast{position:fixed;right:24px;bottom:24px;padding:12px 15px;border:1px solid rgba(var(--accent-rgb),.45);border-radius:11px;background:#0d1117;color:white;box-shadow:0 18px 50px rgba(0,0,0,.5);font-size:12px;font-weight:800;opacity:0;transform:translateY(16px);transition:.18s;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translateY(0)}
+.modal{position:fixed;inset:0;display:none;place-items:center;padding:20px;background:rgba(0,0,0,.68);z-index:60}
+.modal.open{display:grid}
+.modal-box{width:min(450px,94vw);padding:19px;border:1px solid var(--line);border-radius:15px;background:rgb(var(--background-rgb));box-shadow:0 26px 90px rgba(0,0,0,.65)}
+.modal-box h3{margin:0 0 7px;font-size:18px}
+.modal-box p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.empty{padding:22px;color:#85909e;text-align:center;border:1px dashed #303844;border-radius:12px}
+@media(max-width:850px){
+  .admin{height:auto;min-height:95vh}
+  .content{padding:18px 14px 100px}
+  .mode-grid,.files-grid{grid-template-columns:1fr}
+  .search-row{grid-template-columns:1fr}
+  .field{grid-template-columns:1fr;gap:9px}
+  .switch{justify-self:start}
+  .color-control{justify-content:flex-start}
+}
+@media(max-width:580px){
+  .demo-wrap{padding:0}.admin{width:100vw;min-height:100vh;border-radius:0;border-left:0;border-right:0}
+  .header{padding:13px}.brand-title{font-size:18px}.brand img{width:34px;height:34px}
+  .header-btn:first-child{display:none}.tabs{padding:8px}.footerbar{padding:11px}
+  .btn{padding:0 11px}.field{padding:13px 0}
+}
 </style>
 </head>
 <body>
-<div class="demo-shell">
-<section class="admin-card">
-<header class="admin-header">
-  <div class="brand">
-    <img src="https://raw.githubusercontent.com/zbrouscripts/docs/main/assets/brand/zbrou-logo.png" alt="ZBrou">
-    <div><strong>FraseKill Admin</strong><small data-i18n="subtitle">Permissions and administration</small></div>
-  </div>
-  <div class="header-actions">
-    <div class="demo-pill" data-i18n="demo">Interactive demo · nothing is saved</div>
-    <button class="icon-btn" id="langBtn" title="Language">🌐</button>
-  </div>
-</header>
-
-<nav class="admin-tabs">
-  <button class="admin-tab" data-i18n="phrases">Phrases</button>
-  <button class="admin-tab" data-i18n="access">Access</button>
-  <button class="admin-tab" data-i18n="rules">Rules</button>
-  <button class="admin-tab" data-i18n="admins">Administrators</button>
-  <button class="admin-tab active" data-i18n="settings">Script settings</button>
-</nav>
-
-<div class="admin-body">
-  <aside class="sidebar">
-    <div class="side-title" data-i18n="sections">Sections</div>
-    <button class="side-btn active" data-target="interface"><span class="side-dot"></span><span data-i18n="interface">Interface</span></button>
-    <button class="side-btn" data-target="frasekill"><span class="side-dot"></span><span>FraseKill</span></button>
-    <button class="side-btn" data-target="death"><span class="side-dot"></span><span data-i18n="death">Death detection</span></button>
-    <button class="side-btn" data-target="player-access"><span class="side-dot"></span><span data-i18n="playerAccess">Player access</span></button>
-    <button class="side-btn" data-target="rules-section"><span class="side-dot"></span><span data-i18n="rules">Rules</span></button>
-    <button class="side-btn" data-target="notifications"><span class="side-dot"></span><span data-i18n="notifications">Notifications</span></button>
-    <div class="side-note" data-i18n="sideNote">This is a safe documentation demo. It does not connect to FiveM, SQL or Tebex.</div>
-  </aside>
-
-  <main class="content" id="settingsRoot">
-    <div class="settings-head">
+<div class="demo-wrap">
+<section class="admin">
+  <header class="header">
+    <div class="brand">
+      <img src="https://raw.githubusercontent.com/zbrouscripts/docs/main/assets/brand/zbrou-logo.png" alt="ZBrou">
       <div>
-        <h1 data-i18n="settings">Script settings</h1>
-        <p data-i18n="intro">Configure the most common FraseKill options visually. Use the ? icons for a short explanation.</p>
-      </div>
-      <div class="toolbar">
-        <button class="btn danger" id="resetAll"><svg viewBox="0 0 24 24"><path d="M4.7 7.7A8 8 0 1 1 4 13h2a6 6 0 1 0 1.76-4.24L10 11H4V5l.7 2.7Z"/></svg><span data-i18n="restore">Restore defaults</span></button>
-        <button class="btn primary" id="saveDemo" data-i18n="save">Save settings</button>
+        <div class="brand-title">FraseKill Admin</div>
+        <div class="brand-sub" data-t="subtitle">Permissions and administration</div>
       </div>
     </div>
+    <div class="header-actions">
+      <button class="header-btn" data-t="settings">Settings</button>
+      <button class="header-btn close-btn" aria-label="Close">×</button>
+    </div>
+  </header>
 
-    <section class="panel">
-      <div class="panel-title"><div><strong data-i18n="configSource">Configuration source</strong><small data-i18n="configSourceHelp">Choose where FraseKill should read the editable settings from.</small></div></div>
-      <div class="source-cards">
-        <div class="source-card" data-source="config">
-          <div class="source-icon">⌘</div>
-          <div><strong data-i18n="files">Configuration files</strong><small data-i18n="filesHelp">Use config.lua and config_server.lua. Panel controls are locked.</small></div><i class="radio"></i>
+  <nav class="tabs">
+    <button class="tab" data-t="phrases">Phrases</button>
+    <button class="tab" data-t="access">Access</button>
+    <button class="tab" data-t="rules">Rules</button>
+    <button class="tab" data-t="blocked">Blocked words</button>
+    <button class="tab active" data-t="scriptSettings">Script settings</button>
+    <button class="tab" data-t="admins">Administrators</button>
+  </nav>
+
+  <div class="viewport">
+    <main class="content" id="settingsRoot">
+      <h1 class="page-title" data-t="scriptSettings">Script settings</h1>
+      <p class="page-sub" data-t="intro">Configure FraseKill from here.</p>
+
+      <section class="card">
+        <div class="card-pad">
+          <div class="card-head">
+            <div>
+              <h2 data-t="configMode">Configuration mode</h2>
+              <p data-t="configModeHelp">Choose how you want to configure FraseKill.</p>
+            </div>
+            <span class="help" title="Choose between files and the visual administration panel.">?</span>
+          </div>
+          <div class="mode-grid">
+            <div class="mode" data-source="config">
+              <div class="mode-icon">&lt;/&gt;</div>
+              <div>
+                <strong data-t="files">Configuration files</strong>
+                <small data-t="filesHelp">Make changes from the resource files.</small>
+              </div>
+              <span class="radio"></span>
+            </div>
+            <div class="mode active" data-source="panel">
+              <div class="mode-icon">⚙</div>
+              <div>
+                <strong data-t="panel">Administration panel</strong>
+                <small data-t="panelHelp">Change the settings directly from this panel.</small>
+              </div>
+              <span class="radio"></span>
+            </div>
+          </div>
         </div>
-        <div class="source-card active" data-source="panel">
-          <div class="source-icon">▦</div>
-          <div><strong data-i18n="panel">Administration panel</strong><small data-i18n="panelHelp">Change common settings directly from this screen.</small></div><i class="radio"></i>
+      </section>
+
+      <section class="card">
+        <div class="card-pad">
+          <div class="card-head">
+            <div>
+              <h2 data-t="stayFiles">Settings that stay in files</h2>
+              <p data-t="stayFilesHelp">Tebex, webhooks and private options are configured in the resource files.</p>
+            </div>
+          </div>
+          <div class="files-grid">
+            <div class="file-card">
+              <div><strong>Tebex</strong><code>config_server.lua</code></div>
+              <span class="help" title="Tebex plans and private purchase settings remain server-side.">?</span>
+            </div>
+            <div class="file-card">
+              <div><strong data-t="discordWebhooks">Discord webhooks</strong><code>server/webhooks.lua</code></div>
+              <span class="help" title="Webhook URLs are private and are never shown in the web panel.">?</span>
+            </div>
+            <div class="file-card">
+              <div><strong data-t="databaseSecurity">Database &amp; security</strong><code>config_server.lua</code></div>
+              <span class="help" title="Private database/security settings stay in server-only files.">?</span>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <div class="search-row">
+        <input id="search" class="search" type="search" autocomplete="off" placeholder="Find a setting...">
+        <span class="search-hint" data-t="searchHint">Search by name or section</span>
       </div>
-    </section>
 
-    <div class="search-row">
-      <input class="search" id="search" placeholder="Search settings...">
-      <span class="search-count" id="searchCount"></span>
-    </div>
+      <div class="lock-banner" data-t="locked">Configuration files are selected. Change the settings in the resource files or switch back to Administration panel.</div>
+      <div class="settings-list" id="settingsList"></div>
+    </main>
+  </div>
 
-    <div class="lock-notice" data-i18n="locked">Configuration files are selected. Switch to Administration panel to edit these settings here.</div>
-    <div class="sections" id="sections"></div>
-
-    <div class="preview-strip">
-      <div><strong data-i18n="livePreview">Live colour preview</strong><small data-i18n="livePreviewHelp">Accent, background and base colour are applied to this demo immediately.</small></div>
-      <div class="mini-ui"><span class="mini-chip">Slot 1</span><span class="mini-chip active">Slot 2</span><span class="mini-chip">Slot 3</span></div>
-    </div>
-    <div class="demo-footer">
-      <span data-i18n="footer">Documentation preview · no server changes are made</span>
-      <a href="https://github.com/zbrouscripts/docs" target="_blank" rel="noreferrer">zbrouscripts/docs</a>
-    </div>
-  </main>
-</div>
+  <footer class="footerbar">
+    <button class="btn danger" id="resetAll" data-t="restore">Restore defaults</button>
+    <button class="btn" id="discard" data-t="discard">Discard changes</button>
+    <button class="btn primary" id="save" data-t="save">Save settings</button>
+  </footer>
 </section>
 </div>
 
 <div class="modal" id="resetModal">
-  <div class="modal-card">
-    <h3 data-i18n="restore">Restore defaults</h3>
-    <p data-i18n="restoreConfirm">This resets every value in this demo to the FraseKill defaults. Player phrases, access, rules and administrators are not affected.</p>
-    <div class="modal-actions"><button class="btn" id="cancelReset" data-i18n="cancel">Cancel</button><button class="btn primary" id="confirmReset" data-i18n="confirm">Restore</button></div>
+  <div class="modal-box">
+    <h3 data-t="restore">Restore defaults</h3>
+    <p data-t="restoreConfirm">Restore all Script settings to the original FraseKill values? Player phrases, access, rules and administrators are not deleted.</p>
+    <div class="modal-actions">
+      <button class="btn" id="cancelReset" data-t="cancel">Cancel</button>
+      <button class="btn primary" id="confirmReset" data-t="confirm">Restore</button>
+    </div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-const DEFAULTS={accent:"#0e58d8",background:"#15181e",base:"#1a1e25",theme:"classic",locale:"en",maxChars:70,slotMode:"fixed",enabled:true,glow:true,medical:"auto",stage:"dead",access:"managed",rules:true,logs:true};
-let state={...DEFAULTS},source="panel";
+const DEFAULTS={
+  adminCommand:"frasekilladmin",
+  playerCommand:"frasekill",
+  locale:"en",
+  accent:"#0e58d8",
+  background:"#15181e",
+  base:"#1a1e25",
+  theme:"classic",
+  maxChars:70,
+  slotMode:"fixed",
+  enabled:true,
+  glow:true,
+  medical:"auto",
+  stage:"dead",
+  access:"managed",
+  rules:true,
+  logs:true
+};
+let state={...DEFAULTS};
+let saved={...DEFAULTS};
+let source="panel";
 const LANGS=["en","es","pt","fr","tr","de","it","pl"];
-const copy={
-en:{subtitle:"Permissions and administration",demo:"Interactive demo · nothing is saved",phrases:"Phrases",access:"Access",rules:"Rules",admins:"Administrators",settings:"Script settings",sections:"Sections",interface:"Interface",death:"Death detection",playerAccess:"Player access",notifications:"Notifications",sideNote:"This is a safe documentation demo. It does not connect to FiveM, SQL or Tebex.",intro:"Configure the most common FraseKill options visually. Use the ? icons for a short explanation.",restore:"Restore defaults",save:"Save settings",configSource:"Configuration source",configSourceHelp:"Choose where FraseKill should read the editable settings from.",files:"Configuration files",filesHelp:"Use config.lua and config_server.lua. Panel controls are locked.",panel:"Administration panel",panelHelp:"Change common settings directly from this screen.",locked:"Configuration files are selected. Switch to Administration panel to edit these settings here.",livePreview:"Live colour preview",livePreviewHelp:"Accent, background and base colour are applied to this demo immediately.",footer:"Documentation preview · no server changes are made",restoreConfirm:"This resets every value in this demo to the FraseKill defaults. Player phrases, access, rules and administrators are not affected.",cancel:"Cancel",confirm:"Restore",saved:"Demo settings updated.",resetDone:"Demo restored to defaults.",search:"Search settings..."},
-es:{subtitle:"Permisos y administración",demo:"Demo interactiva · no guarda cambios",phrases:"Frases",access:"Accesos",rules:"Normas",admins:"Administradores",settings:"Ajustes del script",sections:"Secciones",interface:"Interfaz",death:"Detección de muerte",playerAccess:"Acceso de jugadores",notifications:"Notificaciones",sideNote:"Esta es una demo segura de la documentación. No se conecta a FiveM, SQL ni Tebex.",intro:"Configura visualmente los ajustes más habituales de FraseKill. Usa los iconos ? para ver una explicación corta.",restore:"Restablecer predeterminado",save:"Guardar ajustes",configSource:"Fuente de configuración",configSourceHelp:"Elige desde dónde debe leer FraseKill los ajustes editables.",files:"Archivos de configuración",filesHelp:"Usa config.lua y config_server.lua. Los controles del panel quedan bloqueados.",panel:"Panel de administración",panelHelp:"Cambia los ajustes habituales directamente desde esta pantalla.",locked:"Has seleccionado Archivos de configuración. Cambia a Panel de administración para editar estos ajustes aquí.",livePreview:"Preview de colores",livePreviewHelp:"El color de detalles, fondo y base se aplican a esta demo al instante.",footer:"Preview de documentación · no se cambia nada en tu servidor",restoreConfirm:"Esto devuelve todos los valores de esta demo a los predeterminados de FraseKill. No afecta a frases, accesos, normas ni administradores.",cancel:"Cancelar",confirm:"Restablecer",saved:"Ajustes de la demo actualizados.",resetDone:"Demo restablecida a los valores predeterminados.",search:"Buscar ajustes..."},
-pt:{subtitle:"Permissões e administração",demo:"Demo interativa · nada é guardado",phrases:"Frases",access:"Acessos",rules:"Regras",admins:"Administradores",settings:"Definições do script",sections:"Secções",interface:"Interface",death:"Deteção de morte",playerAccess:"Acesso de jogadores",notifications:"Notificações",sideNote:"Demo segura da documentação. Não se liga a FiveM, SQL ou Tebex.",intro:"Configura visualmente as opções mais comuns do FraseKill.",restore:"Restaurar predefinições",save:"Guardar",configSource:"Fonte de configuração",files:"Ficheiros de configuração",panel:"Painel de administração",locked:"Os ficheiros de configuração estão selecionados.",livePreview:"Pré-visualização de cores",footer:"Demo de documentação · sem alterações no servidor",cancel:"Cancelar",confirm:"Restaurar",saved:"Demo atualizada.",resetDone:"Valores predefinidos restaurados.",search:"Pesquisar definições..."},
-fr:{subtitle:"Permissions et administration",demo:"Démo interactive · rien n'est enregistré",phrases:"Phrases",access:"Accès",rules:"Règles",admins:"Administrateurs",settings:"Réglages du script",sections:"Sections",interface:"Interface",death:"Détection de mort",playerAccess:"Accès des joueurs",notifications:"Notifications",sideNote:"Démo sûre de la documentation. Aucune connexion à FiveM, SQL ou Tebex.",intro:"Configure visuellement les options principales de FraseKill.",restore:"Restaurer les valeurs",save:"Enregistrer",configSource:"Source de configuration",files:"Fichiers de configuration",panel:"Panneau d'administration",locked:"Les fichiers de configuration sont sélectionnés.",livePreview:"Aperçu des couleurs",footer:"Démo documentation · aucune modification serveur",cancel:"Annuler",confirm:"Restaurer",saved:"Démo mise à jour.",resetDone:"Valeurs restaurées.",search:"Rechercher..."},
-de:{subtitle:"Berechtigungen und Administration",demo:"Interaktive Demo · nichts wird gespeichert",phrases:"Phrasen",access:"Zugriff",rules:"Regeln",admins:"Administratoren",settings:"Script-Einstellungen",sections:"Bereiche",interface:"Oberfläche",death:"Todeserkennung",playerAccess:"Spielerzugriff",notifications:"Benachrichtigungen",sideNote:"Sichere Dokumentationsdemo. Keine Verbindung zu FiveM, SQL oder Tebex.",intro:"Konfiguriere die wichtigsten FraseKill-Einstellungen direkt im Browser.",restore:"Standard wiederherstellen",save:"Speichern",configSource:"Konfigurationsquelle",files:"Konfigurationsdateien",panel:"Adminpanel",locked:"Konfigurationsdateien sind ausgewählt.",livePreview:"Farben-Vorschau",footer:"Dokumentationsdemo · keine Serveränderungen",cancel:"Abbrechen",confirm:"Zurücksetzen",saved:"Demo aktualisiert.",resetDone:"Standardwerte wiederhergestellt.",search:"Einstellungen suchen..."},
-tr:{subtitle:"Yetkiler ve yönetim",demo:"Etkileşimli demo · hiçbir şey kaydedilmez",phrases:"Cümleler",access:"Erişim",rules:"Kurallar",admins:"Yöneticiler",settings:"Script ayarları",sections:"Bölümler",interface:"Arayüz",death:"Ölüm algılama",playerAccess:"Oyuncu erişimi",notifications:"Bildirimler",sideNote:"Güvenli dokümantasyon demosu. FiveM, SQL veya Tebex'e bağlanmaz.",intro:"FraseKill'in temel ayarlarını görsel olarak deneyin.",restore:"Varsayılanlara dön",save:"Kaydet",configSource:"Yapılandırma kaynağı",files:"Yapılandırma dosyaları",panel:"Yönetim paneli",locked:"Yapılandırma dosyaları seçildi.",livePreview:"Renk önizlemesi",footer:"Dokümantasyon demosu · sunucuda değişiklik yapılmaz",cancel:"İptal",confirm:"Sıfırla",saved:"Demo güncellendi.",resetDone:"Varsayılanlar geri yüklendi.",search:"Ayar ara..."},
-it:{subtitle:"Permessi e amministrazione",demo:"Demo interattiva · nulla viene salvato",phrases:"Frasi",access:"Accessi",rules:"Regole",admins:"Amministratori",settings:"Impostazioni script",sections:"Sezioni",interface:"Interfaccia",death:"Rilevamento morte",playerAccess:"Accesso giocatori",notifications:"Notifiche",sideNote:"Demo sicura della documentazione. Non si collega a FiveM, SQL o Tebex.",intro:"Configura visivamente le impostazioni principali di FraseKill.",restore:"Ripristina predefiniti",save:"Salva",configSource:"Fonte configurazione",files:"File di configurazione",panel:"Pannello di amministrazione",locked:"Sono selezionati i file di configurazione.",livePreview:"Anteprima colori",footer:"Demo documentazione · nessuna modifica al server",cancel:"Annulla",confirm:"Ripristina",saved:"Demo aggiornata.",resetDone:"Predefiniti ripristinati.",search:"Cerca impostazioni..."},
-pl:{subtitle:"Uprawnienia i administracja",demo:"Interaktywne demo · nic nie jest zapisywane",phrases:"Frazy",access:"Dostęp",rules:"Zasady",admins:"Administratorzy",settings:"Ustawienia skryptu",sections:"Sekcje",interface:"Interfejs",death:"Wykrywanie śmierci",playerAccess:"Dostęp graczy",notifications:"Powiadomienia",sideNote:"Bezpieczne demo dokumentacji. Nie łączy się z FiveM, SQL ani Tebex.",intro:"Wypróbuj najważniejsze ustawienia FraseKill w przeglądarce.",restore:"Przywróć domyślne",save:"Zapisz",configSource:"Źródło konfiguracji",files:"Pliki konfiguracyjne",panel:"Panel administracyjny",locked:"Wybrano pliki konfiguracyjne.",livePreview:"Podgląd kolorów",footer:"Demo dokumentacji · bez zmian na serwerze",cancel:"Anuluj",confirm:"Przywróć",saved:"Demo zaktualizowane.",resetDone:"Przywrócono domyślne.",search:"Szukaj ustawień..."}
+
+const I={
+en:{
+subtitle:"Permissions and administration",settings:"Settings",phrases:"Phrases",access:"Access",rules:"Rules",blocked:"Blocked words",scriptSettings:"Script settings",admins:"Administrators",
+intro:"Configure FraseKill from here.",configMode:"Configuration mode",configModeHelp:"Choose how you want to configure FraseKill.",
+files:"Configuration files",filesHelp:"Make changes from the resource files.",panel:"Administration panel",panelHelp:"Change the settings directly from this panel.",
+stayFiles:"Settings that stay in files",stayFilesHelp:"Tebex, webhooks and private options are configured in the resource files.",discordWebhooks:"Discord webhooks",databaseSecurity:"Database & security",
+search:"Find a setting...",searchHint:"Search by name or section",locked:"Configuration files are selected. Change the settings in the resource files or switch back to Administration panel.",
+restore:"Restore defaults",discard:"Discard changes",save:"Save settings",cancel:"Cancel",confirm:"Restore",
+restoreConfirm:"Restore all Script settings to the original FraseKill values? Player phrases, access, rules and administrators are not deleted.",
+saved:"Demo settings saved.",discarded:"Unsaved demo changes discarded.",resetDone:"Demo restored to the original defaults.",
+restart:"Restart the resource after saving.",
+interfaceTitle:"Interface",interfaceDesc:"Language, appearance and commands.",fraseTitle:"FraseKill",fraseDesc:"Default values used for new FraseKill configurations.",
+deathTitle:"Death detection",deathDesc:"Choose when and how FraseKill detects a valid death.",accessTitle:"Player access",accessDesc:"Choose who can use FraseKill.",
+rulesTitle:"Rules",rulesDesc:"Basic rule behaviour.",notificationsTitle:"Notifications",notificationsDesc:"Administration notifications and logs."
+},
+es:{
+subtitle:"Permisos y administración",settings:"Ajustes",phrases:"Frases",access:"Accesos",rules:"Normas",blocked:"Palabras bloqueadas",scriptSettings:"Ajustes del script",admins:"Administradores",
+intro:"Configura FraseKill desde aquí.",configMode:"Modo de configuración",configModeHelp:"Elige cómo quieres configurar FraseKill.",
+files:"Archivos de configuración",filesHelp:"Haz los cambios desde los archivos del recurso.",panel:"Panel de administración",panelHelp:"Cambia los ajustes directamente desde este panel.",
+stayFiles:"Ajustes que permanecen en archivos",stayFilesHelp:"Tebex, webhooks y opciones privadas se configuran en los archivos del recurso.",discordWebhooks:"Webhooks de Discord",databaseSecurity:"Base de datos y seguridad",
+search:"Busca un ajuste...",searchHint:"Busca por nombre o apartado",locked:"Has seleccionado Archivos de configuración. Haz los cambios desde los archivos o vuelve a Panel de administración.",
+restore:"Restablecer predeterminado",discard:"Descartar cambios",save:"Guardar ajustes",cancel:"Cancelar",confirm:"Restablecer",
+restoreConfirm:"¿Restablecer todos los Ajustes del script a los valores originales? No se borran frases, accesos, normas ni administradores.",
+saved:"Ajustes de la demo guardados.",discarded:"Cambios de la demo descartados.",resetDone:"Demo restablecida a los valores originales.",
+restart:"Reinicia el recurso después de guardar.",
+interfaceTitle:"Interfaz",interfaceDesc:"Idioma, apariencia y comandos.",fraseTitle:"FraseKill",fraseDesc:"Valores predeterminados para nuevas configuraciones de FraseKill.",
+deathTitle:"Detección de muerte",deathDesc:"Elige cuándo y cómo detecta FraseKill una muerte válida.",accessTitle:"Acceso de jugadores",accessDesc:"Elige quién puede usar FraseKill.",
+rulesTitle:"Normas",rulesDesc:"Comportamiento básico de las normas.",notificationsTitle:"Notificaciones",notificationsDesc:"Avisos administrativos y logs."
+},
+pt:{subtitle:"Permissões e administração",settings:"Definições",phrases:"Frases",access:"Acessos",rules:"Regras",blocked:"Palavras bloqueadas",scriptSettings:"Definições do script",admins:"Administradores",intro:"Configura FraseKill a partir daqui.",configMode:"Modo de configuração",files:"Ficheiros de configuração",panel:"Painel de administração",stayFiles:"Definições que ficam nos ficheiros",discordWebhooks:"Webhooks do Discord",databaseSecurity:"Base de dados e segurança",search:"Procurar uma definição...",searchHint:"Pesquisar por nome ou secção",restore:"Restaurar predefinições",discard:"Descartar alterações",save:"Guardar",cancel:"Cancelar",confirm:"Restaurar",interfaceTitle:"Interface",interfaceDesc:"Idioma, aparência e comandos.",fraseTitle:"FraseKill",fraseDesc:"Valores predefinidos.",deathTitle:"Deteção de morte",deathDesc:"Escolhe quando FraseKill aparece.",accessTitle:"Acesso de jogadores",accessDesc:"Escolhe quem pode usar FraseKill.",rulesTitle:"Regras",rulesDesc:"Comportamento das regras.",notificationsTitle:"Notificações",notificationsDesc:"Avisos e logs."},
+fr:{subtitle:"Permissions et administration",settings:"Réglages",phrases:"Phrases",access:"Accès",rules:"Règles",blocked:"Mots bloqués",scriptSettings:"Réglages du script",admins:"Administrateurs",intro:"Configure FraseKill ici.",configMode:"Mode de configuration",files:"Fichiers de configuration",panel:"Panneau d'administration",stayFiles:"Réglages conservés dans les fichiers",discordWebhooks:"Webhooks Discord",databaseSecurity:"Base de données et sécurité",search:"Rechercher un réglage...",searchHint:"Recherche par nom ou section",restore:"Restaurer",discard:"Annuler les modifications",save:"Enregistrer",cancel:"Annuler",confirm:"Restaurer",interfaceTitle:"Interface",interfaceDesc:"Langue, apparence et commandes.",fraseTitle:"FraseKill",fraseDesc:"Valeurs par défaut.",deathTitle:"Détection de mort",deathDesc:"Choisis quand FraseKill apparaît.",accessTitle:"Accès des joueurs",accessDesc:"Choisis qui peut utiliser FraseKill.",rulesTitle:"Règles",rulesDesc:"Comportement des règles.",notificationsTitle:"Notifications",notificationsDesc:"Alertes et logs."},
+de:{subtitle:"Berechtigungen und Administration",settings:"Einstellungen",phrases:"Phrasen",access:"Zugriff",rules:"Regeln",blocked:"Gesperrte Wörter",scriptSettings:"Script-Einstellungen",admins:"Administratoren",intro:"Konfiguriere FraseKill hier.",configMode:"Konfigurationsmodus",files:"Konfigurationsdateien",panel:"Adminpanel",stayFiles:"Einstellungen, die in Dateien bleiben",discordWebhooks:"Discord-Webhooks",databaseSecurity:"Datenbank & Sicherheit",search:"Einstellung suchen...",searchHint:"Nach Name oder Bereich suchen",restore:"Standard wiederherstellen",discard:"Änderungen verwerfen",save:"Speichern",cancel:"Abbrechen",confirm:"Wiederherstellen",interfaceTitle:"Oberfläche",interfaceDesc:"Sprache, Aussehen und Befehle.",fraseTitle:"FraseKill",fraseDesc:"Standardwerte.",deathTitle:"Todeserkennung",deathDesc:"Wähle, wann FraseKill erscheint.",accessTitle:"Spielerzugriff",accessDesc:"Wähle, wer FraseKill nutzen darf.",rulesTitle:"Regeln",rulesDesc:"Regelverhalten.",notificationsTitle:"Benachrichtigungen",notificationsDesc:"Meldungen und Logs."},
+tr:{subtitle:"Yetkiler ve yönetim",settings:"Ayarlar",phrases:"Cümleler",access:"Erişim",rules:"Kurallar",blocked:"Engellenen kelimeler",scriptSettings:"Script ayarları",admins:"Yöneticiler",intro:"FraseKill'i buradan yapılandır.",configMode:"Yapılandırma modu",files:"Yapılandırma dosyaları",panel:"Yönetim paneli",stayFiles:"Dosyalarda kalan ayarlar",discordWebhooks:"Discord webhookları",databaseSecurity:"Veritabanı ve güvenlik",search:"Ayar ara...",searchHint:"İsim veya bölüme göre ara",restore:"Varsayılanlara dön",discard:"Değişiklikleri at",save:"Kaydet",cancel:"İptal",confirm:"Sıfırla",interfaceTitle:"Arayüz",interfaceDesc:"Dil, görünüm ve komutlar.",fraseTitle:"FraseKill",fraseDesc:"Varsayılan değerler.",deathTitle:"Ölüm algılama",deathDesc:"FraseKill'in ne zaman görüneceğini seç.",accessTitle:"Oyuncu erişimi",accessDesc:"Kimlerin kullanacağını seç.",rulesTitle:"Kurallar",rulesDesc:"Kural davranışı.",notificationsTitle:"Bildirimler",notificationsDesc:"Uyarılar ve loglar."},
+it:{subtitle:"Permessi e amministrazione",settings:"Impostazioni",phrases:"Frasi",access:"Accessi",rules:"Regole",blocked:"Parole bloccate",scriptSettings:"Impostazioni script",admins:"Amministratori",intro:"Configura FraseKill da qui.",configMode:"Modalità configurazione",files:"File di configurazione",panel:"Pannello di amministrazione",stayFiles:"Impostazioni che restano nei file",discordWebhooks:"Webhook Discord",databaseSecurity:"Database e sicurezza",search:"Cerca un'impostazione...",searchHint:"Cerca per nome o sezione",restore:"Ripristina predefiniti",discard:"Scarta modifiche",save:"Salva",cancel:"Annulla",confirm:"Ripristina",interfaceTitle:"Interfaccia",interfaceDesc:"Lingua, aspetto e comandi.",fraseTitle:"FraseKill",fraseDesc:"Valori predefiniti.",deathTitle:"Rilevamento morte",deathDesc:"Scegli quando appare FraseKill.",accessTitle:"Accesso giocatori",accessDesc:"Scegli chi può usare FraseKill.",rulesTitle:"Regole",rulesDesc:"Comportamento regole.",notificationsTitle:"Notifiche",notificationsDesc:"Avvisi e log."},
+pl:{subtitle:"Uprawnienia i administracja",settings:"Ustawienia",phrases:"Frazy",access:"Dostęp",rules:"Zasady",blocked:"Blokowane słowa",scriptSettings:"Ustawienia skryptu",admins:"Administratorzy",intro:"Skonfiguruj FraseKill tutaj.",configMode:"Tryb konfiguracji",files:"Pliki konfiguracyjne",panel:"Panel administracyjny",stayFiles:"Ustawienia pozostające w plikach",discordWebhooks:"Webhooki Discord",databaseSecurity:"Baza danych i bezpieczeństwo",search:"Znajdź ustawienie...",searchHint:"Szukaj po nazwie lub sekcji",restore:"Przywróć domyślne",discard:"Odrzuć zmiany",save:"Zapisz",cancel:"Anuluj",confirm:"Przywróć",interfaceTitle:"Interfejs",interfaceDesc:"Język, wygląd i komendy.",fraseTitle:"FraseKill",fraseDesc:"Wartości domyślne.",deathTitle:"Wykrywanie śmierci",deathDesc:"Wybierz, kiedy pojawia się FraseKill.",accessTitle:"Dostęp graczy",accessDesc:"Wybierz, kto może używać FraseKill.",rulesTitle:"Zasady",rulesDesc:"Zachowanie zasad.",notificationsTitle:"Powiadomienia",notificationsDesc:"Alerty i logi."}
 };
-const sectionCopy={
-en:{interface:["Interface","Language, theme, commands and the global menu colours."],frasekill:["FraseKill","Default values used when a player creates a new FraseKill."],death:["Death detection","Choose how FraseKill detects the victim's death."],access:["Player access","Choose who can use FraseKill and how access is granted."],rules:["Rules","Basic rule and moderation behaviour."],notifications:["Notifications","Admin alerts and Discord log behaviour."]},
-es:{interface:["Interfaz","Idioma, tema, comandos y colores globales del menú."],frasekill:["FraseKill","Valores que reciben por defecto las nuevas configuraciones."],death:["Detección de muerte","Elige cómo detecta FraseKill la muerte de la víctima."],access:["Acceso de jugadores","Elige quién puede usar FraseKill y cómo se concede el acceso."],rules:["Normas","Comportamiento básico de normas y moderación."],notifications:["Notificaciones","Avisos administrativos y comportamiento de logs de Discord."]}
+
+const sectionMeta={
+interface:["interfaceTitle","interfaceDesc"],
+frasekill:["fraseTitle","fraseDesc"],
+death:["deathTitle","deathDesc"],
+"player-access":["accessTitle","accessDesc"],
+rules:["rulesTitle","rulesDesc"],
+notifications:["notificationsTitle","notificationsDesc"]
 };
+
 const fields=[
-{section:"interface",key:"locale",label:{en:"Default language",es:"Idioma predeterminado"},help:{en:"Language new players see first.",es:"Idioma que verán primero los jugadores nuevos."},type:"select",options:[["en","English"],["es","Español"],["pt","Português"],["fr","Français"],["tr","Türkçe"],["de","Deutsch"],["it","Italiano"],["pl","Polski"]]},
-{section:"interface",key:"theme",label:{en:"Menu style",es:"Estilo del menú"},help:{en:"Classic is solid. Liquid Glass adds the optional glass effect.",es:"Classic es sólido. Liquid Glass añade el efecto de cristal opcional."},type:"select",options:[["classic","Classic"],["liquid","Liquid Glass"]]},
-{section:"interface",key:"accent",label:{en:"Detail colour",es:"Color de detalles"},help:{en:"Active buttons, switches, selected slots and highlights.",es:"Botones activos, switches, slots seleccionados y resaltados."},type:"color",reset:true},
-{section:"interface",key:"background",label:{en:"Background colour",es:"Color del fondo"},help:{en:"Main menu background.",es:"Fondo principal del menú."},type:"color",reset:true},
-{section:"interface",key:"base",label:{en:"Base colour",es:"Color base"},help:{en:"Cards, fields, inactive slots and inner blocks.",es:"Tarjetas, campos, slots inactivos y bloques interiores."},type:"color",reset:true},
-{section:"frasekill",key:"maxChars",label:{en:"Maximum characters",es:"Máximo de caracteres"},help:{en:"Maximum length of a player's phrase.",es:"Longitud máxima que puede tener la frase del jugador."},type:"number",min:10,max:255},
-{section:"frasekill",key:"slotMode",label:{en:"Default slot mode",es:"Modo de slot predeterminado"},help:{en:"Fixed keeps one slot. Random rotates between enabled slots.",es:"Fijo usa un slot. Aleatorio cambia entre los slots activados."},type:"select",options:[["fixed","Fixed / Fijo"],["random","Random / Aleatorio"]]},
-{section:"frasekill",key:"enabled",label:{en:"FraseKill enabled by default",es:"FraseKill activada por defecto"},help:{en:"New player configurations start enabled.",es:"Las configuraciones nuevas empiezan activadas."},type:"switch"},
-{section:"frasekill",key:"glow",label:{en:"Glow enabled by default",es:"Brillo activado por defecto"},help:{en:"New phrases start with glow enabled.",es:"Las frases nuevas empiezan con el brillo activado."},type:"switch"},
-{section:"death",key:"medical",label:{en:"Medical adapter",es:"Adaptador médico"},help:{en:"Auto detects a supported ambulance resource.",es:"Auto detecta un ambulance compatible."},type:"select",options:[["auto","Auto"],["wasabi","Wasabi Ambulance"],["esx","ESX Ambulance"],["qb","QB Ambulance"],["qbx","Qbox Medical"],["standalone","Standalone"]]},
-{section:"death",key:"stage",label:{en:"Death stage",es:"Momento de la muerte"},help:{en:"Choose whether FraseKill appears at incapacitated or dead.",es:"Elige si aparece al quedar incapacitado o cuando ya está muerto."},type:"select",options:[["dead","Dead"],["incapacitated","Incapacitated"]]},
-{section:"player-access",key:"access",label:{en:"Access mode",es:"Modo de acceso"},help:{en:"Managed, Managed + Tebex or a custom server check.",es:"Gestionado, Gestionado + Tebex o comprobación personalizada."},type:"select",options:[["managed","Managed / Gestionado"],["managed_tebex","Managed + Tebex"],["custom","Custom / Personalizado"]]},
-{section:"rules-section",key:"rules",label:{en:"Rules enabled",es:"Normas activadas"},help:{en:"Allow the rules system and View rules button.",es:"Activa el sistema de normas y el botón View rules."},type:"switch"},
-{section:"notifications",key:"logs",label:{en:"Admin notifications",es:"Notificaciones administrativas"},help:{en:"Enable FraseKill administration logs.",es:"Activa los logs administrativos de FraseKill."},type:"switch"}
+{section:"interface",key:"adminCommand",label:{en:"Administration command",es:"Comando de administración"},desc:{en:"Command used to open FraseKill Admin.",es:"Comando para abrir FraseKill Admin."},type:"text",restart:true},
+{section:"interface",key:"playerCommand",label:{en:"Player command",es:"Comando de jugador"},desc:{en:"Command players use to open FraseKill.",es:"Comando que usan los jugadores para abrir FraseKill."},type:"text",restart:true},
+{section:"interface",key:"locale",label:{en:"Default language",es:"Idioma predeterminado"},desc:{en:"Language shown to new players first.",es:"Idioma que se muestra primero a jugadores nuevos."},type:"select",options:[["en","English"],["es","Español"],["pt","Português"],["fr","Français"],["tr","Türkçe"],["de","Deutsch"],["it","Italiano"],["pl","Polski"]]},
+{section:"interface",key:"accent",label:{en:"Detail colour",es:"Color de detalles"},desc:{en:"Active buttons, switches and highlights.",es:"Botones activos, switches y resaltados."},type:"color",reset:true},
+{section:"interface",key:"background",label:{en:"Background colour",es:"Color del fondo"},desc:{en:"Main menu background.",es:"Fondo principal del menú."},type:"color",reset:true},
+{section:"interface",key:"base",label:{en:"Base colour",es:"Color base"},desc:{en:"Cards, fields and inner blocks.",es:"Tarjetas, campos y bloques interiores."},type:"color",reset:true},
+{section:"interface",key:"theme",label:{en:"Default appearance",es:"Apariencia predeterminada"},desc:{en:"Choose Classic or Liquid Glass.",es:"Elige Classic o Liquid Glass."},type:"select",options:[["classic","Classic"],["liquid","Liquid Glass"]]},
+
+{section:"frasekill",key:"maxChars",label:{en:"Maximum characters",es:"Máximo de caracteres"},desc:{en:"Maximum phrase length.",es:"Longitud máxima de la frase."},type:"number",min:10,max:255},
+{section:"frasekill",key:"slotMode",label:{en:"Default slot mode",es:"Modo de slot predeterminado"},desc:{en:"Fixed uses one slot. Random rotates between enabled slots.",es:"Fijo usa un slot. Aleatorio cambia entre los slots activados."},type:"select",options:[["fixed","Fixed / Fijo"],["random","Random / Aleatorio"]]},
+{section:"frasekill",key:"enabled",label:{en:"FraseKill enabled by default",es:"FraseKill activada por defecto"},desc:{en:"New configurations start enabled.",es:"Las configuraciones nuevas empiezan activadas."},type:"switch"},
+{section:"frasekill",key:"glow",label:{en:"Glow enabled by default",es:"Brillo activado por defecto"},desc:{en:"New phrases start with glow enabled.",es:"Las frases nuevas empiezan con brillo."},type:"switch"},
+
+{section:"death",key:"medical",label:{en:"Medical adapter",es:"Adaptador médico"},desc:{en:"Auto detects a supported ambulance resource.",es:"Auto detecta un ambulance compatible."},type:"select",options:[["auto","Auto"],["wasabi","Wasabi Ambulance"],["brutal","Brutal Ambulance"],["ars","ARS Ambulance"],["tk","TK Ambulance"],["qbx","Qbox Medical"],["qb","QB Ambulance"],["esx","ESX Ambulance"],["standalone","Standalone"]]},
+{section:"death",key:"stage",label:{en:"Death stage",es:"Momento de la muerte"},desc:{en:"Choose incapacitated or dead.",es:"Elige incapacitado o muerto."},type:"select",options:[["dead","Dead"],["incapacitated","Incapacitated"]]},
+
+{section:"player-access",key:"access",label:{en:"Access mode",es:"Modo de acceso"},desc:{en:"Choose managed, managed + Tebex or custom.",es:"Elige gestionado, gestionado + Tebex o personalizado."},type:"select",options:[["managed","Managed / Gestionado"],["managed_tebex","Managed + Tebex"],["custom","Custom / Personalizado"]]},
+
+{section:"rules",key:"rules",label:{en:"Rules enabled",es:"Normas activadas"},desc:{en:"Enable rules and View rules.",es:"Activa las normas y View rules."},type:"switch"},
+{section:"notifications",key:"logs",label:{en:"Administration notifications",es:"Notificaciones administrativas"},desc:{en:"Enable FraseKill administration logs.",es:"Activa los logs administrativos de FraseKill."},type:"switch"}
 ];
 
-function rgb(hex){const n=parseInt(hex.slice(1),16);return [(n>>16)&255,(n>>8)&255,n&255].join(",")}
-function shade(hex,amount){const n=parseInt(hex.slice(1),16),r=Math.max(0,Math.min(255,(n>>16)+amount)),g=Math.max(0,Math.min(255,((n>>8)&255)+amount)),b=Math.max(0,Math.min(255,(n&255)+amount));return "#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("")}
-function applyColours(){
- const root=document.documentElement;
- root.style.setProperty("--accent",state.accent);root.style.setProperty("--accent-rgb",rgb(state.accent));
- root.style.setProperty("--menu",state.background);root.style.setProperty("--menu-rgb",rgb(state.background));
- root.style.setProperty("--base",state.base);root.style.setProperty("--base-rgb",rgb(state.base));root.style.setProperty("--base-hover",shade(state.base,7));
- document.body.classList.toggle("liquid",state.theme==="liquid");
+function lang(){
+  const q=new URLSearchParams(location.search).get("lang");
+  return LANGS.includes(q)?q:"en";
 }
-function lang(){const q=new URLSearchParams(location.search).get("lang");return LANGS.includes(q)?q:"es"}
-let currentLang=lang();
-function tr(key){return copy[currentLang]?.[key]||copy.en[key]||key}
-function labelFor(field){return field.label[currentLang]||field.label.en}
-function helpFor(field){return field.help[currentLang]||field.help.en}
-function sectionText(key){return (sectionCopy[currentLang]||sectionCopy.en)[key]||(sectionCopy.en[key]||[key,""])}
-function renderI18n(){document.documentElement.lang=currentLang;document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=tr(el.dataset.i18n));document.getElementById("search").placeholder=tr("search")}
-function renderFields(){
- const wrap=document.getElementById("sections");wrap.innerHTML="";
- const query=document.getElementById("search").value.trim().toLowerCase();
- const grouped={};let shown=0;
- for(const f of fields){const hay=(labelFor(f)+" "+helpFor(f)+" "+f.section).toLowerCase();if(query&&!hay.includes(query))continue;(grouped[f.section]??=[]).push(f);shown++}
- const order=["interface","frasekill","death","player-access","rules-section","notifications"];
- for(const s of order){if(!grouped[s]?.length)continue;const [title,desc]=sectionText(s==="player-access"?"access":s==="rules-section"?"rules":s);const sec=document.createElement("section");sec.className="section";sec.id=s;sec.innerHTML='<div class="section-header"><h2>'+title+'</h2><p>'+desc+'</p></div><div class="fields"></div>';const box=sec.querySelector(".fields");
- for(const f of grouped[s]){const row=document.createElement("div");row.className="field";const info=document.createElement("div");info.className="field-info";info.innerHTML='<div class="field-title"><strong>'+labelFor(f)+'</strong><span class="help" title="'+helpFor(f).replace(/"/g,"&quot;")+'">?</span></div><small>'+helpFor(f)+'</small>';const control=document.createElement("div");control.className="control";
- if(f.type==="select"){const sel=document.createElement("select");sel.className="select";for(const [v,l] of f.options){const o=document.createElement("option");o.value=v;o.textContent=l;sel.append(o)}sel.value=state[f.key];sel.onchange=()=>{state[f.key]=sel.value;if(f.key==="theme"){applyColours()}};control.append(sel)}
- if(f.type==="number"){const inp=document.createElement("input");inp.className="input";inp.type="number";inp.min=f.min;inp.max=f.max;inp.value=state[f.key];inp.oninput=()=>state[f.key]=Number(inp.value||DEFAULTS[f.key]);control.append(inp)}
- if(f.type==="switch"){const sw=document.createElement("div");sw.className="switch"+(state[f.key]?" on":"");sw.setAttribute("role","switch");sw.tabIndex=0;const toggle=()=>{state[f.key]=!state[f.key];sw.classList.toggle("on",state[f.key])};sw.onclick=toggle;sw.onkeydown=e=>{if(e.key===" "||e.key==="Enter"){e.preventDefault();toggle()}};control.append(sw)}
- if(f.type==="color"){const cc=document.createElement("div");cc.className="color-control";const inp=document.createElement("input");inp.type="color";inp.value=state[f.key];const code=document.createElement("span");code.className="color-code";code.textContent=state[f.key].toUpperCase();inp.oninput=()=>{state[f.key]=inp.value;code.textContent=inp.value.toUpperCase();applyColours()};cc.append(inp,code);if(f.reset){const b=document.createElement("button");b.className="reset-color";b.title="Reset";b.innerHTML='<svg viewBox="0 0 24 24"><path d="M4.7 7.7A8 8 0 1 1 4 13h2a6 6 0 1 0 1.76-4.24L10 11H4V5l.7 2.7Z"/></svg>';b.onclick=()=>{state[f.key]=DEFAULTS[f.key];inp.value=state[f.key];code.textContent=state[f.key].toUpperCase();applyColours()};cc.append(b)}control.append(cc)}
- row.append(info,control);box.append(row)}wrap.append(sec)}
- document.getElementById("searchCount").textContent=shown+" / "+fields.length;
+const currentLang=lang();
+function t(k){return I[currentLang]?.[k]??I.en[k]??k}
+function pick(obj){return obj?.[currentLang]??obj?.en??""}
+function rgb(hex){const n=parseInt(hex.slice(1),16);return[(n>>16)&255,(n>>8)&255,n&255].join(",")}
+function applyTheme(){
+  const r=document.documentElement;
+  r.style.setProperty("--accent",state.accent);r.style.setProperty("--accent-rgb",rgb(state.accent));
+  r.style.setProperty("--background",state.background);r.style.setProperty("--background-rgb",rgb(state.background));
+  r.style.setProperty("--base",state.base);r.style.setProperty("--base-rgb",rgb(state.base));
+  document.body.classList.toggle("liquid",state.theme==="liquid");
 }
-function setSource(next){source=next;document.querySelectorAll(".source-card").forEach(c=>c.classList.toggle("active",c.dataset.source===source));document.getElementById("settingsRoot").classList.toggle("locked",source!=="panel")}
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2200)}
-document.querySelectorAll(".source-card").forEach(c=>c.onclick=()=>setSource(c.dataset.source));
-document.querySelectorAll(".side-btn").forEach(b=>b.onclick=()=>{document.querySelectorAll(".side-btn").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.target)?.scrollIntoView({behavior:"smooth",block:"start"})});
-document.getElementById("search").addEventListener("input",renderFields);
+function applyCopy(){
+  document.documentElement.lang=currentLang;
+  document.querySelectorAll("[data-t]").forEach(el=>{el.textContent=t(el.dataset.t)});
+  document.getElementById("search").placeholder=t("search");
+}
+function controlFor(f){
+  const wrap=document.createElement("div");wrap.className="control";
+  if(f.type==="text"||f.type==="number"){
+    const x=document.createElement("input");x.className="input";x.type=f.type;x.value=state[f.key];
+    if(f.min!=null)x.min=f.min;if(f.max!=null)x.max=f.max;
+    x.oninput=()=>{state[f.key]=f.type==="number"?Number(x.value||DEFAULTS[f.key]):x.value};
+    wrap.append(x);
+  }
+  if(f.type==="select"){
+    const s=document.createElement("select");s.className="select";
+    f.options.forEach(([v,l])=>{const o=document.createElement("option");o.value=v;o.textContent=l;s.append(o)});
+    s.value=state[f.key];
+    s.onchange=()=>{state[f.key]=s.value;if(f.key==="theme")applyTheme()};
+    wrap.append(s);
+  }
+  if(f.type==="switch"){
+    const sw=document.createElement("div");sw.className="switch"+(state[f.key]?" on":"");sw.tabIndex=0;sw.setAttribute("role","switch");
+    const toggle=()=>{state[f.key]=!state[f.key];sw.classList.toggle("on",state[f.key])};
+    sw.onclick=toggle;sw.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle()}};
+    wrap.append(sw);
+  }
+  if(f.type==="color"){
+    const c=document.createElement("div");c.className="color-control";
+    const input=document.createElement("input");input.type="color";input.value=state[f.key];
+    const code=document.createElement("span");code.className="color-code";code.textContent=state[f.key].toUpperCase();
+    input.oninput=()=>{state[f.key]=input.value;code.textContent=input.value.toUpperCase();applyTheme()};
+    c.append(input,code);
+    if(f.reset){
+      const b=document.createElement("button");b.className="reset-color";b.title="Reset";b.innerHTML='<svg viewBox="0 0 24 24"><path d="M4.7 7.7A8 8 0 1 1 4 13h2a6 6 0 1 0 1.76-4.24L10 11H4V5l.7 2.7Z"/></svg>';
+      b.onclick=()=>{state[f.key]=DEFAULTS[f.key];input.value=state[f.key];code.textContent=state[f.key].toUpperCase();applyTheme()};
+      c.append(b);
+    }
+    wrap.append(c);
+  }
+  return wrap;
+}
+function render(){
+  const q=document.getElementById("search").value.trim().toLowerCase();
+  const list=document.getElementById("settingsList");list.innerHTML="";
+  const grouped={};
+  fields.forEach(f=>{
+    const hay=(pick(f.label)+" "+pick(f.desc)+" "+f.section).toLowerCase();
+    if(q&&!hay.includes(q))return;
+    (grouped[f.section]??=[]).push(f);
+  });
+  const order=["interface","frasekill","death","player-access","rules","notifications"];
+  let total=0;
+  order.forEach(sec=>{
+    const rows=grouped[sec];if(!rows?.length)return;total+=rows.length;
+    const box=document.createElement("section");box.className="setting-section";
+    const [titleKey,descKey]=sectionMeta[sec];
+    box.innerHTML='<div class="section-head"><h3>'+t(titleKey)+'</h3><p>'+t(descKey)+'</p></div><div class="fields"></div>';
+    const holder=box.querySelector(".fields");
+    rows.forEach(f=>{
+      const row=document.createElement("div");row.className="field";
+      const info=document.createElement("div");info.className="field-info";
+      info.innerHTML='<div class="field-title"><strong>'+pick(f.label)+'</strong><span class="help" title="'+pick(f.desc).replace(/"/g,"&quot;")+'">?</span></div><span class="field-desc">'+pick(f.desc)+'</span>'+(f.restart?'<span class="restart">'+t("restart")+'</span>':"");
+      row.append(info,controlFor(f));holder.append(row);
+    });
+    list.append(box);
+  });
+  if(!total){list.innerHTML='<div class="empty">No settings found.</div>'}
+}
+function setSource(next){
+  source=next;
+  document.querySelectorAll(".mode").forEach(x=>x.classList.toggle("active",x.dataset.source===source));
+  document.getElementById("settingsRoot").classList.toggle("locked",source==="config");
+}
+function toast(msg){
+  const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");
+  clearTimeout(window.__toast);window.__toast=setTimeout(()=>el.classList.remove("show"),2000);
+}
+document.querySelectorAll(".mode").forEach(x=>x.onclick=()=>setSource(x.dataset.source));
+document.getElementById("search").oninput=render;
 document.getElementById("resetAll").onclick=()=>document.getElementById("resetModal").classList.add("open");
 document.getElementById("cancelReset").onclick=()=>document.getElementById("resetModal").classList.remove("open");
-document.getElementById("confirmReset").onclick=()=>{state={...DEFAULTS};source="panel";setSource("panel");applyColours();renderFields();document.getElementById("resetModal").classList.remove("open");toast(tr("resetDone"))};
-document.getElementById("saveDemo").onclick=()=>toast(tr("saved"));
-document.getElementById("langBtn").onclick=()=>{const i=(LANGS.indexOf(currentLang)+1)%LANGS.length;currentLang=LANGS[i];const u=new URL(location.href);u.searchParams.set("lang",currentLang);history.replaceState(null,"",u);renderI18n();renderFields()};
+document.getElementById("confirmReset").onclick=()=>{
+  state={...DEFAULTS};saved={...DEFAULTS};source="panel";
+  applyTheme();setSource("panel");render();document.getElementById("resetModal").classList.remove("open");toast(t("resetDone"));
+};
+document.getElementById("discard").onclick=()=>{state={...saved};applyTheme();render();toast(t("discarded"))};
+document.getElementById("save").onclick=()=>{saved={...state};toast(t("saved"))};
 document.getElementById("resetModal").onclick=e=>{if(e.target.id==="resetModal")e.currentTarget.classList.remove("open")};
-renderI18n();applyColours();renderFields();setSource("panel");
+applyCopy();applyTheme();render();setSource("panel");
 </script>
 </body>
 </html>
