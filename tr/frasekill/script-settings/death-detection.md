@@ -1,9 +1,18 @@
 # Ölüm algılama
 
-Bu bölüm FraseKill'in **ne zaman görünmesi gerektiğini** belirler.
+Bu bölüm FraseKill'in **ne zaman ve nerede görünebileceğini** belirler.
 
-Çoğu sunucuda **Auto** bırakabilirsin. FraseKill kullandığın ambulance scriptini algılamaya çalışır.
+Çoğu sunucuda medical sistemini **Auto** bırakabilirsin.
 
-Medical sistemine göre incapacitated veya dead aşamasını seçebilirsin.
+## Ölüm bölgeleri
 
-Desteklenen liste için **Medical uyumluluğu** sayfasına bak.
+Bölgeler oyuncuya erişim vermez. Killer'ın normal FraseKill erişimi yine gereklidir.
+
+- **Dışarısı izinli + Engelle bölgesi** — her yerde çalışır, bu bölgelerde çalışmaz.
+- **Dışarısı engelli + İzin bölgesi** — yalnızca izin bölgelerinde çalışır.
+
+Çakışmada Engelle bölgesi önceliklidir.
+
+Panel mevcut konumunu merkez olarak alabilir ve yarıçapı dünyada gösterebilir. Mavi = izin, kırmızı = engel.
+
+Gerçek kontrol sunucuda, kurbanın ölüm konumuyla yapılır.

@@ -3,8 +3,8 @@
 Wybierz, jak FraseKill ma wyglądać przy pierwszym użyciu.
 
 - **Fixed** — zawsze używa wybranego slotu.
-- **Random** — przełącza aktywne sloty, aby różne kille mogły pokazywać różne frazy.
+- **Random** — przełącza aktywne sloty.
 
-Możesz ustawić początkową frazę, limit znaków, włączenie, kolor, rozmiar, poświatę, czcionkę, animację, szybkość i nazwę killera.
+Fraza ma kolor, **krycie**, rozmiar, poświatę, czcionkę i animację. Linia killera ma też własne **krycie i poświatę**, a także kolor, rozmiar, wyrównanie, czcionkę i animację.
 
 Każda opcja ma `?` z prostym opisem.

@@ -1,9 +1,18 @@
 # Deteção de morte
 
-Esta secção decide **quando FraseKill deve aparecer**.
+Esta secção decide **quando e onde FraseKill pode aparecer**.
 
-Na maioria dos servidores podes deixar o adaptador em **Auto**. FraseKill tentará detetar o ambulance job utilizado.
+Na maioria dos servidores deixa o medical em **Auto**.
 
-Também podes escolher se deve aparecer quando a vítima fica incapacitada ou quando já está morta, dependendo do medical.
+## Zonas de morte
 
-Consulta **Compatibilidade médica** para veres a lista suportada.
+As zonas não dão acesso ao jogador. O killer continua a precisar de acesso normal ao FraseKill.
+
+- **Fora permitido + zona Bloquear** — funciona em todo o lado menos nessas zonas.
+- **Fora bloqueado + zona Permitir** — funciona apenas dentro das zonas permitidas.
+
+Zonas bloqueadas têm prioridade quando há sobreposição.
+
+Podes usar a tua posição atual como centro e pré-visualizar o raio no mundo. Azul = permitir, vermelho = bloquear.
+
+A validação final usa a posição da morte da vítima no servidor.

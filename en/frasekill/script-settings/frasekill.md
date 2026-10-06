@@ -13,16 +13,10 @@ Players can still change their own phrase and appearance later if they have acce
 
 You can choose:
 
-- starting phrase;
-- character limit;
-- whether FraseKill starts enabled;
-- text colour;
-- size;
-- glow;
-- font;
-- animation;
-- speed;
-- killer-name appearance.
+- starting phrase and character limit;
+- phrase colour, **opacity**, size, glow, font and animation;
+- killer-line colour, **opacity, glow**, size, alignment, font and animation;
+- whether FraseKill starts enabled.
 
 Every setting includes a `?` with a simple explanation.
 

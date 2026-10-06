@@ -3,8 +3,8 @@
 Lege fest, wie FraseKill beim ersten Benutzen aussieht.
 
 - **Fixed** — verwendet immer den ausgewählten Slot.
-- **Random** — wechselt zwischen aktiven Slots, damit verschiedene Kills verschiedene Phrasen zeigen können.
+- **Random** — wechselt zwischen aktiven Slots.
 
-Du kannst Startphrase, Zeichenlimit, Aktivierung, Farbe, Größe, Glow, Schrift, Animation, Geschwindigkeit und Killer-Namen einstellen.
+Für die Phrase kannst du Farbe, **Deckkraft**, Größe, Glow, Schrift und Animation einstellen. Die Killer-Zeile hat zusätzlich eigene **Deckkraft und Glow** sowie Farbe, Größe, Ausrichtung, Schrift und Animation.
 
 Jede Option hat ein `?` mit einfacher Erklärung.

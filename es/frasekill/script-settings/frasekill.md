@@ -13,16 +13,10 @@ Los jugadores podrán cambiar después su propia frase y apariencia si tienen ac
 
 Puedes elegir, entre otras cosas:
 
-- frase inicial;
-- límite de caracteres;
-- si FraseKill aparece activada por defecto;
-- color del texto;
-- tamaño;
-- brillo;
-- tipografía;
-- animación;
-- velocidad;
-- apariencia del nombre del killer.
+- frase inicial y límite de caracteres;
+- color, **opacidad**, tamaño, brillo, tipografía y animación de la frase;
+- color, **opacidad, brillo**, tamaño, alineación, tipografía y animación de la línea del killer;
+- si FraseKill aparece activada por defecto.
 
 Cada ajuste tiene un `?` que explica para qué sirve.
 
