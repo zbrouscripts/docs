@@ -13,6 +13,8 @@ Panel pozwala zmienić język, kolory, domyślne wartości, wykrywanie śmierci,
 
 Otwórz **interaktywne demo Ustawień skryptu** w tym samym stylu co prawdziwy panel. Możesz sprawdzić Classic/Liquid Glass, kolory, przełączniki, listy, blokadę plików i reset.
 
+Demo odwzorowuje prawdziwą strukturę panelu: jeden przewijany ekran, sekcje w tej samej kolejności i stały pasek akcji na dole.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pl" %}
 
 [**Otwórz demo na pełnym ekranie →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pl)
