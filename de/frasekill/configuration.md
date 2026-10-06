@@ -13,6 +13,8 @@ Im Panel kannst du Sprache, Farben, Standardwerte, Todeserkennung, Zugriff, Tebe
 
 Öffne eine **interaktive Demo der Script-Einstellungen** im gleichen visuellen Stil wie das echte Panel. Teste Classic/Liquid Glass, Farben, Schalter, Auswahlfelder, Datei-Sperrmodus und Zurücksetzen.
 
+Die Demo folgt der echten Panel-Struktur: eine scrollbare Seite, die Blöcke in derselben Reihenfolge und die feste Aktionsleiste unten.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=de" %}
 
 [**Demo im Vollbild öffnen →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=de)
