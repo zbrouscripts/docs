@@ -19,6 +19,8 @@ If you choose **Configuration files**, the panel options are locked so it is cle
 
 Open an **interactive Script settings demo** using the same visual style as the real panel. You can try Classic/Liquid Glass, colours, switches, dropdowns, Configuration files lock mode and Restore defaults.
 
+The demo follows the real panel structure: one scrollable screen, blocks in the same order, and the fixed action bar at the bottom.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=en" %}
 
 [**Open the full-screen demo →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=en)
