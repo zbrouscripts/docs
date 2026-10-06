@@ -1,7 +1,13 @@
 # Kompatybilność medyczna
 
-Na większości serwerów możesz zostawić wykrywanie na **Auto**. FraseKill spróbuje automatycznie rozpoznać używany ambulance job.
+Na większości serwerów możesz zostawić **Auto**. FraseKill wykryje uruchomiony, obsługiwany ambulance.
 
-Obsługiwane są Wasabi Ambulance V1/V2, Brutal Ambulance Job, ARS Ambulance Job, TK Ambulance Job, Qbox Medical/Ambulance, QB Ambulance, ESX Ambulance, AS Ambulance, Sky Ambulance, AK47 Ambulance, P Ambulance i standalone.
+Obsługiwane są Wasabi V1/V2, Brutal, ARS, TK, Qbox, QB, AS, Sky, AK47, P Ambulance, standalone oraz **klasyczny/starszy/1.2-era ESX Ambulance Job i aktualny ESX Legacy**.
 
-Dla innych medicali możesz użyć własnego sprawdzania po stronie serwera.
+## ESX Ambulance Job
+
+FraseKill obsługuje wieloletnie ścieżki: numeryczny/boolean status śmierci, `esx:onPlayerDeath`, spawn/revive i aktualny stan Legacy.
+
+W starszych wersjach ESX z jednym wspólnym stanem nieprzytomny/martwy użyj **Wykrywanie śmierci → Incapacitated**.
+
+Końcowa walidacja pozostaje po stronie serwera. Sam stan wysłany przez klienta nie jest dowodem śmierci. Prywatne forki mogą użyć własnego sprawdzania server-side.

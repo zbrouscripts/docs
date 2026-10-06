@@ -1,7 +1,13 @@
 # Compatibilité médicale
 
-Dans la plupart des serveurs, laisse la détection sur **Auto**. FraseKill essaie de reconnaître l'ambulance job actif.
+Dans la plupart des serveurs, laisse **Auto**. FraseKill détecte la ressource ambulance compatible en cours d'exécution.
 
-Compatibilité incluse avec Wasabi Ambulance V1/V2, Brutal Ambulance Job, ARS Ambulance Job, TK Ambulance Job, Qbox Medical/Ambulance, QB Ambulance, ESX Ambulance, AS Ambulance, Sky Ambulance, AK47 Ambulance, P Ambulance et le mode standalone.
+Compatibilité incluse avec Wasabi V1/V2, Brutal, ARS, TK, Qbox, QB, AS, Sky, AK47, P Ambulance, standalone et **ESX Ambulance Job classique, anciennes versions/1.2 et Legacy actuel**.
 
-Si ton medical n'est pas dans la liste, tu peux utiliser une vérification personnalisée côté serveur.
+## ESX Ambulance Job
+
+FraseKill prend en charge les chemins utilisés au fil des versions : état numérique/booléen, `esx:onPlayerDeath`, spawn/revive et l'état Legacy actuel.
+
+Pour les anciennes versions avec un seul état inconscient/mort, utilise **Détection de mort → Incapacitated**.
+
+La validation finale reste côté serveur. Un état client seul n'est pas accepté comme preuve de mort. Les forks privés peuvent utiliser la vérification serveur personnalisée.
