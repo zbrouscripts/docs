@@ -6,6 +6,8 @@ Bu bölümden FraseKill'i dosyalardaki her ayarı tek tek değiştirmeden hazır
 
 Dosya modu seçiliyken panelin geri kalanı koyulaşır ve kilitlenir.
 
+Açılır menülerdeki her seçenek, üzerine gelince veya klavyeyle odaklanınca `?` yardımlarıyla aynı şekilde açıklanır.
+
 ## Varsayılanlara dön
 
 Global reset, oyuncu cümlelerini, erişimleri, kuralları, engellenen kelimeleri veya adminleri silmeden Script ayarlarını başlangıç değerlerine döndürür.

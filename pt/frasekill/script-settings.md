@@ -6,6 +6,8 @@ No topo escolhes entre **Ficheiros de configuração** e **Painel de administra�
 
 Quando usas ficheiros, o resto do painel fica escurecido e bloqueado.
 
+Os menus também explicam cada opção ao passar o rato por cima ou ao focá-la com o teclado, usando o mesmo estilo das ajudas `?`.
+
 ## Restaurar predefinições
 
 O botão **Restaurar predefinições** devolve as definições do script aos valores originais sem apagar frases, acessos, regras, palavras bloqueadas ou administradores.

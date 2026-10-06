@@ -6,6 +6,8 @@ Scegli **File di configurazione** o **Pannello di amministrazione**. Solo l'owne
 
 Con i file di configurazione, il resto del pannello viene oscurato e bloccato.
 
+I menu a discesa spiegano anche ogni opzione al passaggio del mouse o con il focus da tastiera, usando lo stesso stile degli aiuti `?`.
+
 ## Ripristina predefiniti
 
 Il reset globale ripristina le impostazioni dello script senza cancellare frasi, accessi, regole, parole bloccate o amministratori.

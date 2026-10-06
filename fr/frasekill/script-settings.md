@@ -6,6 +6,8 @@ Choisis **Fichiers de configuration** ou **Panneau d'administration**. Seul l'ow
 
 Quand les fichiers sont utilisés, le reste du panneau est grisé et verrouillé.
 
+Les menus déroulants expliquent aussi chaque option au survol ou au focus clavier, avec le même style d’aide que les `?`.
+
 ## Restaurer les valeurs par défaut
 
 Le bouton global remet les réglages du script à leur état d'origine sans supprimer les phrases, accès, règles, mots bloqués ou administrateurs.

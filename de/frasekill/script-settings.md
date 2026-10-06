@@ -6,6 +6,8 @@ Wähle **Konfigurationsdateien** oder **Adminpanel**. Nur der Haupt-Owner kann d
 
 Bei Konfigurationsdateien ist der Rest des Panels abgedunkelt und gesperrt.
 
+Dropdowns erklären außerdem jede Option beim Darüberfahren oder per Tastaturfokus, im gleichen Stil wie die `?`-Hilfen.
+
 ## Standardwerte wiederherstellen
 
 Der globale Reset setzt die Script-Einstellungen zurück, ohne Phrasen, Zugriffe, Regeln, gesperrte Wörter oder Administratoren zu löschen.

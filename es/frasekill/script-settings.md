@@ -4,6 +4,8 @@
 
 Está dividido en pocos bloques para que sea fácil encontrar lo que buscas.
 
+Además, los desplegables explican cada opción al pasar el ratón por encima o enfocarla con el teclado, igual que las ayudas `?`.
+
 ## Elegir cómo quieres configurar el script
 
 En la parte superior puedes elegir:

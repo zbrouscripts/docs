@@ -4,6 +4,8 @@
 
 It is split into a few clear groups so settings are easy to find.
 
+Dropdowns also explain each option when you hover it or focus it with the keyboard, using the same help style as the `?` hints.
+
 ## Choose how you want to configure FraseKill
 
 At the top you can choose:
