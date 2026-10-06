@@ -2,24 +2,30 @@
 
 ## `/frasekill` açılmıyor
 
-Oyuncunun etkin erişimini kontrol edin, admin olarak `/frasekillstatus` çalıştırın ve F8 ile sunucu konsolunu inceleyin.
+- Oyuncunun erişimi olduğunu kontrol et.
+- Admin olarak `/frasekillstatus` kullan.
+- F8 ve sunucu konsolundaki hataları kontrol et.
 
-## Veritabanı tabloları oluşmuyor
+## FraseKill Admin açılmıyor
 
-`oxmysql` kaynağının `zbrou_frasekill` öncesinde başladığını kontrol edin. Otomatik oluşturma kapalıysa `sql/install.sql` çalıştırın.
+`/frasekilladmin` kullan. Henüz owner değilsen script `server.cfg` için gereken satırı gösterir.
 
-## Admin paneli açılmıyor
+## Script ayarları kilitli
 
-Doğru ACE iznini `server.cfg` içine ekleyin ve kaynağı yeniden başlatın.
+**Yapılandırma dosyaları** seçili. Panelden düzenlemek için **Yönetim paneli** seç.
 
-## Revive sonrası FraseKill kaybolmuyor
+## Yanlış ambulance algılanıyor
 
-`Config.Display.Mode`, `/frasekillstatus` tarafından gösterilen adapter ve `FailsafeSeconds` değerini kontrol edin.
+**Script ayarları → Ölüm algılama** bölümünü aç. Önce **Auto** dene; birden fazla medical varsa doğru olanı elle seç.
+
+## SQL sorunu
+
+FraseKill tabloları otomatik hazırlar. Manuel kurulum için `sql/install.sql` dosyası bulunur.
 
 ## Tebex erişim vermiyor
 
-`Config.Tebex.Enabled`, komutun konsol/Tebex üzerinden çalıştığı ve plan anahtarının birebir doğru olduğu kontrol edilmelidir.
+**Yönetilen erişim + Tebex** seçili olmalı ve plan adı yapılandırmadakiyle aynı olmalı.
 
-## Yardım
+## Baştan başlamak istiyorum
 
-Resmi Discord için **Destek** sayfasını açın.
+**Varsayılanlara dön** seçeneğini kullan. Oyuncu cümleleri, erişimler, kurallar ve adminler silinmez.

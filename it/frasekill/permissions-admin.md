@@ -1,9 +1,27 @@
 # Permessi e amministrazione
 
-Apri il pannello con `/frasekilladmin`. Il metodo consigliato è ACE:
+## Owner principale
+
+L'owner ha accesso completo a FraseKill Admin.
+
+Aggiungi una sola riga in `server.cfg`:
 
 ```cfg
 add_ace identifier.license:TUA_LICENSE zbrou.frasekill.admin allow
 ```
 
-Se non hai il permesso, FraseKill mostra automaticamente la riga ACE pronta da copiare. In **Accessi** puoi gestire permessi permanenti o temporanei e i Job/gruppi abilitati in `Config.GroupAccess`. In **Frasi** puoi cercare utenti, aprire i dettagli, modificare preset, resettare/eliminare configurazioni, dare o togliere accesso, salvare note interne e inviare messaggi ai giocatori online. Le azioni importanti vengono sempre riconvalidate server-side.
+Se non conosci la license, entra nel server e usa `/frasekilladmin`. FraseKill mostrerà la riga esatta da copiare.
+
+## Aggiungere altri amministratori
+
+Non servono altri ACE.
+
+L'owner crea gli admin dal pannello e sceglie cosa possono fare: vedere i giocatori, gestire gli accessi, modificare/ripristinare FraseKill, gestire le regole e cambiare le impostazioni dello script.
+
+Essere admin non dà automaticamente accesso giocatore a FraseKill.
+
+## Accesso giocatori
+
+Può essere permanente o temporaneo. Puoi anche dare accesso a job o gruppi.
+
+Per Tebex, vedi **Impostazioni script → Accesso e Tebex**.

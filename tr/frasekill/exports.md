@@ -1,6 +1,8 @@
-# Exportlar
+# Exports
 
-Bu exportlar FraseKill’i diğer kaynaklarla entegre etmek için kullanılır. İsimler ve parametreler tüm dillerde aynıdır.
+{% hint style="info" %}
+Bu sayfa FraseKill'i başka bir script ile bağlamak isteyen ileri seviye kullanıcılar içindir. Normal kurulumda kullanmana gerek yoktur.
+{% endhint %}
 
 ## Server
 
@@ -10,6 +12,8 @@ exports['zbrou_frasekill']:GetStorageIdentifier(source)
 exports['zbrou_frasekill']:ShowFraseKill(victimSource, killerSource, options)
 exports['zbrou_frasekill']:ExportPreset(source, slotIndex)
 exports['zbrou_frasekill']:ImportPreset(source, slotIndex, presetJson)
+exports['zbrou_frasekill']:HasFraseKillAccess(source)
+exports['zbrou_frasekill']:HasFraseKillAdmin(source)
 ```
 
 ## Client

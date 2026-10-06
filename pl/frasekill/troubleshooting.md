@@ -2,24 +2,30 @@
 
 ## `/frasekill` nie otwiera się
 
-Sprawdź efektywny dostęp gracza, uruchom `/frasekillstatus` jako admin oraz przejrzyj F8 i konsolę serwera.
+- Sprawdź, czy gracz ma dostęp.
+- Jako admin użyj `/frasekillstatus`.
+- Sprawdź F8 i konsolę serwera.
 
-## Tabele bazy danych nie są tworzone
+## FraseKill Admin nie otwiera się
 
-Upewnij się, że `oxmysql` startuje przed `zbrou_frasekill`. Jeśli auto-tworzenie jest wyłączone, wykonaj `sql/install.sql`.
+Użyj `/frasekilladmin`. Jeśli nie jesteś jeszcze ownerem, skrypt pokaże linię do dodania w `server.cfg`.
 
-## Panel admina nie otwiera się
+## Ustawienia skryptu są zablokowane
 
-Dodaj poprawne uprawnienie ACE do `server.cfg` i zrestartuj zasób.
+Wybrane są **Pliki konfiguracyjne**. Wybierz **Panel administracyjny**, aby edytować w panelu.
 
-## FraseKill nie znika po revive
+## Zły ambulance job
 
-Sprawdź `Config.Display.Mode`, adapter pokazany przez `/frasekillstatus` oraz `FailsafeSeconds`.
+Otwórz **Ustawienia skryptu → Wykrywanie śmierci**. Najpierw użyj **Auto**; jeśli masz kilka medicali, wybierz właściwy ręcznie.
 
-## Tebex nie nadaje dostępu
+## Problem SQL
 
-Sprawdź `Config.Tebex.Enabled`, czy komenda jest wykonywana z konsoli/Tebex oraz czy klucz planu jest identyczny z konfiguracją.
+FraseKill przygotowuje tabele automatycznie. Dla instalacji ręcznej dostępny jest `sql/install.sql`.
 
-## Pomoc
+## Tebex nie daje dostępu
 
-Otwórz stronę **Wsparcie**, aby dołączyć do oficjalnego Discorda.
+Sprawdź, czy wybrano **Zarządzany dostęp + Tebex** i czy nazwa planu jest zgodna.
+
+## Chcę wrócić do początku
+
+Użyj **Przywróć domyślne**. Frazy, dostępy, zasady i administratorzy nie zostaną usunięci.

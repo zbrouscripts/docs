@@ -2,24 +2,30 @@
 
 ## `/frasekill` não abre
 
-Confirma o acesso efetivo do jogador, executa `/frasekillstatus` como admin e verifica o F8 e a consola do servidor.
+- Confirma que o jogador tem acesso.
+- Como admin, usa `/frasekillstatus`.
+- Verifica F8 e a consola do servidor.
 
-## As tabelas não são criadas
+## FraseKill Admin não abre
 
-Garante que `oxmysql` inicia antes de `zbrou_frasekill`. Se a criação automática estiver desativada, executa `sql/install.sql`.
+Usa `/frasekilladmin`. Se ainda não fores owner, o script mostra a linha que deves adicionar ao `server.cfg`.
 
-## O painel admin não abre
+## Definições do script estão bloqueadas
 
-Adiciona a permissão ACE correta ao `server.cfg` e reinicia o recurso.
+Está selecionado **Ficheiros de configuração**. Escolhe **Painel de administração** para editar pelo painel.
 
-## FraseKill não desaparece após revive
+## Ambulance errado
 
-Revê `Config.Display.Mode`, o adapter mostrado por `/frasekillstatus` e `FailsafeSeconds`.
+Vai a **Definições do script → Deteção de morte**. Experimenta **Auto** primeiro; se tiveres vários medicals, escolhe manualmente o que usas.
 
-## Tebex não concede acesso
+## Problema com SQL
 
-Confirma `Config.Tebex.Enabled`, que o comando é executado por consola/Tebex e que a chave do plano está correta.
+FraseKill prepara as tabelas automaticamente. Para instalação manual, tens `sql/install.sql`.
 
-## Ajuda
+## Tebex não dá acesso
 
-Abre **Suporte** para entrar no Discord oficial.
+Confirma que estás a usar **Acesso gerido + Tebex** e que o plano tem o mesmo nome da configuração.
+
+## Quero voltar ao início
+
+Usa **Restaurar predefinições**. Frases, acessos, regras e administradores não são apagados.

@@ -1,9 +1,27 @@
 # Berechtigungen und Administration
 
-Öffne das Panel mit `/frasekilladmin`. Empfohlen wird ACE:
+## Haupt-Owner
+
+Der Owner hat vollständigen Zugriff auf FraseKill Admin.
+
+Füge nur eine Zeile in `server.cfg` ein:
 
 ```cfg
 add_ace identifier.license:DEINE_LICENSE zbrou.frasekill.admin allow
 ```
 
-Ohne Berechtigung zeigt FraseKill automatisch die passende ACE-Zeile zum Kopieren. Unter **Zugriff** werden permanente oder zeitlich begrenzte Spielerrechte sowie die in `Config.GroupAccess` aktivierten Jobs/Gruppen verwaltet. Unter **Phrasen** können Spieler gesucht, Details geöffnet, Presets bearbeitet, Einstellungen zurückgesetzt/gelöscht, Zugriffe geändert, interne Notizen gespeichert und Online-Spieler benachrichtigt werden. Wichtige Aktionen werden serverseitig erneut geprüft.
+Wenn du deine License nicht kennst, nutze `/frasekilladmin`. FraseKill zeigt dir die genaue Zeile zum Kopieren.
+
+## Weitere Administratoren
+
+Weitere ACE-Zeilen sind nicht nötig.
+
+Der Owner erstellt Admins im Panel und entscheidet, was sie dürfen: Spieler ansehen, Zugriff verwalten, FraseKill bearbeiten/zurücksetzen, Regeln verwalten und Script-Einstellungen ändern.
+
+Admin-Rechte geben nicht automatisch Spielerzugriff auf FraseKill.
+
+## Spielerzugriff
+
+Zugriff kann dauerhaft oder zeitlich begrenzt sein. Jobs und Gruppen können ebenfalls Zugriff erhalten.
+
+Für Tebex siehe **Script-Einstellungen → Zugriff und Tebex**.

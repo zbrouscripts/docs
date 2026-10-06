@@ -1,9 +1,27 @@
-# İzinler ve yönetim
+# Yetkiler ve yönetim
 
-Paneli `/frasekilladmin` ile açın. Önerilen koruma ACE’dir:
+## Ana owner
+
+Owner, FraseKill Admin üzerinde tam yetkiye sahiptir.
+
+`server.cfg` içine tek satır ekle:
 
 ```cfg
-add_ace identifier.license:SENIN_LICENSE zbrou.frasekill.admin allow
+add_ace identifier.license:LICENSE zbrou.frasekill.admin allow
 ```
 
-İzniniz yoksa FraseKill kopyalamanız gereken ACE satırını otomatik gösterir. **Erişim** bölümünde kalıcı/süreli oyuncu erişimleri ve `Config.GroupAccess` ile açık olan Job/gruplar yönetilir. **FraseKill** bölümünde oyuncu arama, detay açma, preset düzenleme, sıfırlama/silme, erişim verme/kaldırma, iç not ve online mesaj işlemleri yapılabilir. Önemli tüm işlemler sunucuda tekrar doğrulanır.
+License değerini bilmiyorsan sunucuda `/frasekilladmin` kullan. FraseKill kopyalaman gereken satırı gösterir.
+
+## Başka adminler eklemek
+
+Başka ACE satırları gerekmez.
+
+Owner panelden admin oluşturur ve her birinin yetkilerini seçer: oyuncuları görmek, erişim vermek/kaldırmak, FraseKill düzenlemek/sıfırlamak, kuralları yönetmek ve Script ayarlarını değiştirmek.
+
+Admin olmak oyuncu olarak FraseKill kullanma erişimi vermez.
+
+## Oyuncu erişimi
+
+Erişim kalıcı veya süreli olabilir. Job ve gruplara da erişim verilebilir.
+
+Tebex için **Script ayarları → Erişim ve Tebex** bölümüne bak.

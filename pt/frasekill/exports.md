@@ -1,8 +1,10 @@
 # Exports
 
-Estes exports permitem integrar FraseKill com outros recursos. Os nomes e parâmetros são iguais em todos os idiomas.
+{% hint style="info" %}
+Esta página é apenas para utilizadores avançados que queiram ligar FraseKill a outro script. Para uma instalação normal, podes ignorá-la.
+{% endhint %}
 
-## Server
+## Servidor
 
 ```lua
 exports['zbrou_frasekill']:HasAccess(source)
@@ -10,9 +12,11 @@ exports['zbrou_frasekill']:GetStorageIdentifier(source)
 exports['zbrou_frasekill']:ShowFraseKill(victimSource, killerSource, options)
 exports['zbrou_frasekill']:ExportPreset(source, slotIndex)
 exports['zbrou_frasekill']:ImportPreset(source, slotIndex, presetJson)
+exports['zbrou_frasekill']:HasFraseKillAccess(source)
+exports['zbrou_frasekill']:HasFraseKillAdmin(source)
 ```
 
-## Client
+## Cliente
 
 ```lua
 exports['zbrou_frasekill']:SetExternalDeathState(trueOrFalse)
