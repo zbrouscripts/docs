@@ -3,39 +3,36 @@
 ## `/frasekill` does not open
 
 - Confirm the player has effective access.
+- Check `Config.Access.Mode`.
 - Run `/frasekillstatus` as an administrator.
-- Check F8 and the server console for errors.
-
-## Database tables are not created
-
-- Make sure `oxmysql` starts before `zbrou_frasekill`.
-- Verify database credentials.
-- If automatic creation is disabled, run `sql/install.sql` manually.
+- Check F8 and server console.
 
 ## Admin panel does not open
 
-Add the correct ACE to `server.cfg` and restart the resource:
+Verify the owner ACE and restart after changing it:
 
 ```cfg
 add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
 ```
 
-## FraseKill appears behind another NUI
+Delegated admins are managed from the panel; they do not need their own player-use ACE.
 
-Increase `Config.NuiZIndex` only if another fullscreen resource renders above it.
+## Script settings are grey/locked
 
-## FraseKill does not hide on revive
+This is expected when **Configuration files** is selected. The owner must switch to **Administration panel** to edit supported settings in the UI.
 
-- Review `Config.Display.Mode`.
-- Check the adapter shown by `/frasekillstatus`.
-- `FailsafeSeconds` is the safety limit for `death_state`.
+## Medical detection is wrong
+
+Run `/frasekillstatus`, check `Config.Death.Preferred` and verify the exact resource name. You can force `Config.Death.Adapter` or use the custom server-side death check.
+
+## Database tables are missing
+
+Start `oxmysql` first. With AutoCreate disabled, apply the appropriate files from `sql/`.
 
 ## Tebex does not grant access
 
-- Check `Config.Tebex.Enabled`.
-- The delivery command must run from console/Tebex, not from a player.
-- Make sure the plan name exactly matches the configured key.
+Check `Config.Tebex.Enabled`, use `managed_tebex`, make sure the plan key is correct and ensure the command is executed by Tebex/console, not a player.
 
-## Need help?
+## UI colours look wrong
 
-Open **Support** to join the official Discord.
+Use the separate detail/background/base pickers. Each menu colour has an individual reset icon, and the owner can use global **Restore defaults** to clear all Script settings overrides.

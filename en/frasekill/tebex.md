@@ -1,49 +1,40 @@
 # Tebex and expirations
 
-FraseKill can automatically deliver access through Tebex game-server commands.
+Tebex access is optional and server-side. Use `Config.Access.Mode = 'managed_tebex'` when you want normal managed grants **plus** active Tebex entitlements.
 
-## Enable Tebex
-
-In `config_server.lua`:
+Enable it in `config_server.lua`:
 
 ```lua
 Config.Tebex.Enabled = true
 ```
 
-Create any plans you need:
+Example plans:
 
 ```lua
 Plans = {
     week = { Label = '1 week', Days = 7 },
     month = { Label = '1 month', Days = 30 },
+    year = { Label = '1 year', Days = 365 },
     permanent = { Label = 'Permanent', Permanent = true }
 }
 ```
 
-Minutes, hours, weeks, months and years are also supported.
+## Purchase / renewal
 
-## Purchase or renewal command
-
-Use in the Tebex package:
+Add a Tebex Game Server Command:
 
 ```text
 frasekill_tebex {id} month {transaction}
 ```
 
-`month` must match your plan key. Renewals are added to the remaining time and each transaction is tracked separately.
+Use the same command for renewal. Timed renewals extend the remaining entitlement and each transaction is tracked to prevent duplicates.
 
-## Refund or chargeback
+## Refund / chargeback
 
 ```text
 frasekill_tebex_revoke {id} {transaction}
 ```
 
-This revokes only that transaction without removing other valid purchases from the same player.
+Do not use revoke for a normal cancellation when paid access should continue until its end date. Timed plans expire automatically.
 
-## Normal expiration
-
-Timed plans expire automatically. You do not need to run `revoke` when the paid period simply ends.
-
-## Warnings
-
-`Config.ExpiryNotifications` controls pre-expiration warnings. If another source such as a job or ACE still grants access, FraseKill avoids telling the player they are losing all access.
+Tebex commands accept console execution only. FraseKill does not store a Tebex API key in the NUI.

@@ -1,33 +1,31 @@
 # Permissions and administration
 
-## Open the panel
+## Owner
 
-```text
-/frasekilladmin
-```
-
-ACE is the recommended way to protect the admin panel:
+FraseKill uses one ACE only:
 
 ```cfg
 add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
 ```
 
-If you open the panel without permission, FraseKill displays the ready-to-copy ACE line with your own identifier.
+This ACE gives the main owner full admin authority. It does **not** automatically give player-use access to FraseKill.
 
-## Player access
+## Delegated administrators
 
-The **Access** tab can grant access to online players by ID or by a supported identifier. Persistent permissions are stored with a stable identifier, not the temporary session ID.
+The owner can create administrators inside the panel and grant individual permissions such as viewing profiles, granting/revoking access, editing/resetting phrases, deleting profiles, messaging players, editing rules, managing blocked words and configuring the script.
 
-Access can be permanent or last for minutes, hours, days, weeks, months or years.
+Delegated admin permissions are stored in SQL and remain separate from player access.
 
-## Jobs and groups
+## Player access modes
 
-Available group systems depend on `Config.GroupAccess` in `config_server.lua`. Jobs, GuilleGangs V2, QB/Qbox gangs and custom resolvers can be enabled, including minimum grades.
+`Config.Access.Mode` supports only:
 
-## Phrases
+- `managed` — access granted by FraseKill player/job/group grants.
+- `managed_tebex` — managed access plus active Tebex entitlements.
+- `custom` — your server-side `Config.Access.CustomCheck`.
 
-The **Phrases** tab lets admins search users, open details, edit presets, reset/delete settings, grant/revoke manual access, save internal notes and send a message to an online player.
+There is no player-use ACE mode.
 
-## Security
+## Temporary access
 
-Important actions are validated again on the server. Never rely on NUI/client permissions as the only security layer.
+Managed grants can be permanent or time-limited. Expiry is checked server-side. If another valid source still grants access, FraseKill does not incorrectly report that the player lost all access.

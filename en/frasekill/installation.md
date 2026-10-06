@@ -1,41 +1,38 @@
 # Installation
 
-## Quick start
+## Requirements
 
-1. Install and start `oxmysql`.
-2. Add `zbrou_frasekill` to your server.
-3. Review permissions and configuration before opening the server to players.
-4. Add to `server.cfg`:
+- FiveM server.
+- `oxmysql` running before FraseKill.
+- ESX, QBCore or Qbox are optional; standalone is supported.
+- `zbrou_utils` is **not** required.
+
+## Install
+
+1. Put the folder in your resources directory and keep the resource name `zbrou_frasekill`.
+2. Add:
 
 ```cfg
 ensure oxmysql
 ensure zbrou_frasekill
 ```
 
-5. Restart the resource or server.
+3. Leave `Config.Storage.AutoCreate = true` for automatic table creation/migrations, or run `sql/install.sql` manually if you manage SQL yourself.
+4. Restart the server/resource and reconnect.
 
-FraseKill automatically creates and migrates its tables when `Config.Storage.AutoCreate = true`, which is the default. If you prefer a manual database setup, you can also run `sql/install.sql`.
+## First owner
 
-## First administrator
-
-Run:
-
-```text
-/frasekilladmin
-```
-
-If you do not have permission yet, the menu shows the exact ACE line to copy into `server.cfg`. You can also add it manually:
+The only ACE used by FraseKill is the owner/admin ACE:
 
 ```cfg
 add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
 ```
 
-Restart the resource after changing ACE permissions.
+You can also run `/frasekilladmin` without permission: FraseKill shows the exact line for your license. Restart after changing ACE permissions.
 
-## Check
+## First checks
 
-- `/frasekill` opens the editor when the player has access.
-- `/frasekilladmin` opens the administration panel.
+- `/frasekill` opens the editor only if the player has access.
+- `/frasekilladmin` opens the admin panel for the owner or delegated admins.
 - `/frasekillstatus` shows diagnostics to administrators.
-
-`/frasekilltest` is a development-only tool and is disabled in the public release.
+- `/frasekilltest` is disabled by default and should only be enabled on a test server.

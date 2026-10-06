@@ -1,36 +1,20 @@
 # Customization
 
-The FraseKill editor lets each of the 3 presets keep its own complete configuration.
+Each player has 3 complete FraseKill slots. Every slot stores its own phrase, text colour, glow, font, size, screen position, animation, animation speed and killer-name style.
 
-## Per preset
+## Fixed and random
 
-Each slot can store:
-
-- Phrase.
-- Text color.
-- Glow color and intensity.
-- Font.
-- Size.
-- Horizontal and vertical position.
-- Animation and speed.
-- Show/hide killer text.
-- Killer-text color, font, size and alignment.
-- Whether the slot participates in random mode.
+- **Fixed** always uses the slot selected by the player.
+- **Random** changes between enabled slots with a valid phrase, so different kills can show different messages.
 
 ## Live preview
 
-You can drag FraseKill directly inside the preview frame and switch between 16:9, 16:10, 4:3, 5:4 and 21:9. The replay-animation button only replays the preview; it does not make the animation loop during real kills.
+The preview lets the player move and style the phrase before saving. The replay button only replays the animation inside the editor; it does not loop the animation during a real kill.
 
-## Copy presets
+## Fonts and animations
 
-A full preset can be copied from one slot to another and then adjusted.
+The resource includes 100 font options and 25 animations plus `None`. Phrase and killer-name animation/speed are independent.
 
-## Menu colors
+## Rules
 
-Global UI colors are grouped at the end of `web/styles.css` under:
-
-```css
-/* ZBROU FRASEKILL THEME */
-```
-
-This lets you recolor the interface without editing JavaScript.
+`View rules` is available from the main FraseKill editor. Rules and blocked-word checks are validated server-side.
