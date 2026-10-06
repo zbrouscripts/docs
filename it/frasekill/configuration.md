@@ -13,6 +13,8 @@ Il pannello permette di cambiare lingua, colori, valori predefiniti, rilevamento
 
 Apri una **demo interattiva delle Impostazioni script** con lo stesso stile visivo del pannello reale. Puoi provare Classic/Liquid Glass, colori, switch, menu, blocco tramite file e ripristino.
 
+La demo segue la struttura reale del pannello: un'unica schermata con scroll, blocchi nello stesso ordine e barra azioni fissa in basso.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=it" %}
 
 [**Apri la demo a schermo intero →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=it)
