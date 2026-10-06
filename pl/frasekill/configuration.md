@@ -1,28 +1,27 @@
 # Konfiguracja
 
-FraseKill można skonfigurować na dwa sposoby:
+FraseKill można skonfigurować na dwa sposoby: przez **wizualny panel Ustawień skryptu**, który pozwala zmienić większość opcji z `config.lua` i `config_server.lua` bez edycji kodu, albo bezpośrednio w tych plikach.
 
-- **Panel administracyjny** — najprostsza opcja.
-- **Pliki konfiguracyjne** — jeśli wolisz edytować Lua.
+Niektóre prywatne opcje, takie jak webhooki i ustawienia wrażliwe, pozostają tylko w plikach zasobu.
 
-Tryb wybierasz w **FraseKill Admin → Ustawienia skryptu**.
+## Wizualny panel konfiguracji
 
-Panel pozwala zmienić język, kolory, domyślne wartości, wykrywanie śmierci, dostęp, Tebex, zasady i powiadomienia. Każda opcja ma `?` z prostym opisem.
-
-## Wypróbuj panel przed konfiguracją
-
-Otwórz **interaktywne demo Ustawień skryptu** w tym samym stylu co prawdziwy panel. Możesz sprawdzić Classic/Liquid Glass, kolory, przełączniki, listy, blokadę plików i reset.
-
-Demo odwzorowuje prawdziwą strukturę panelu: jeden przewijany ekran, sekcje w tej samej kolejności i stały pasek akcji na dole.
+To ten sam typ panelu, który znajdziesz w FraseKill Admin. Możesz go wypróbować tutaj przed zmianą czegokolwiek na serwerze.
 
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pl" %}
 
-[**Otwórz demo na pełnym ekranie →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pl)
+[**Otwórz panel konfiguracji na pełnym ekranie →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pl)
 
 {% hint style="info" %}
-To tylko demo dokumentacji: nie łączy się z FiveM, SQL ani Tebex.
+Demo nie łączy się z FiveM, SQL ani Tebex i nie wprowadza zmian na serwerze.
 {% endhint %}
 
-- `config.lua` — wygląd, język, komendy, wartości domyślne i animacje.
+## Konfiguracja przez pliki
+
+- `config.lua` — język, wygląd, komendy, wartości domyślne, animacje i zachowanie interfejsu.
 - `config_server.lua` — dostęp, administracja, Tebex, bezpieczeństwo i opcje serwera.
 - `server/webhooks.lua` — webhooki Discord.
+
+{% hint style="info" %}
+Jeśli nie masz dużego doświadczenia, użyj **wizualnego panelu** do normalnych ustawień i edytuj pliki tylko wtedy, gdy jest to potrzebne.
+{% endhint %}

@@ -1,28 +1,27 @@
 # Configurazione
 
-FraseKill può essere configurato in due modi:
+FraseKill può essere configurato in due modi: dal **pannello visuale delle Impostazioni script**, che permette di cambiare la maggior parte delle opzioni di `config.lua` e `config_server.lua` senza modificare codice, oppure direttamente da quei file.
 
-- **Pannello di amministrazione** — la scelta più semplice.
-- **File di configurazione** — se preferisci modificare i file Lua.
+Alcune opzioni private, come webhook e impostazioni sensibili, restano solo nei file della risorsa.
 
-Scegli la modalità da **FraseKill Admin → Impostazioni script**.
+## Pannello visuale di configurazione
 
-Il pannello permette di cambiare lingua, colori, valori predefiniti, rilevamento morte, accesso, Tebex, regole e notifiche. Ogni opzione ha un `?` con una spiegazione semplice.
-
-## Prova il pannello prima di configurarlo
-
-Apri una **demo interattiva delle Impostazioni script** con lo stesso stile visivo del pannello reale. Puoi provare Classic/Liquid Glass, colori, switch, menu, blocco tramite file e ripristino.
-
-La demo segue la struttura reale del pannello: un'unica schermata con scroll, blocchi nello stesso ordine e barra azioni fissa in basso.
+È lo stesso tipo di pannello che trovi dentro FraseKill Admin. Puoi provarlo qui prima di modificare il server.
 
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=it" %}
 
-[**Apri la demo a schermo intero →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=it)
+[**Apri il pannello di configurazione a schermo intero →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=it)
 
 {% hint style="info" %}
-È solo una demo della documentazione: non si collega a FiveM, SQL o Tebex.
+La demo non si collega a FiveM, SQL o Tebex e non modifica alcun server.
 {% endhint %}
 
-- `config.lua` — aspetto, lingua, comandi, valori predefiniti e animazioni.
+## Configurare dai file
+
+- `config.lua` — lingua, aspetto, comandi, valori predefiniti, animazioni e comportamento visuale.
 - `config_server.lua` — accesso, amministrazione, Tebex, sicurezza e opzioni server.
 - `server/webhooks.lua` — webhook Discord.
+
+{% hint style="info" %}
+Se non hai molta esperienza, usa il **pannello visuale** per le impostazioni normali e modifica i file solo quando serve.
+{% endhint %}
