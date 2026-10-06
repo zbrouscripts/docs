@@ -13,6 +13,8 @@ Le panneau permet de modifier visuellement la langue, les couleurs, les valeurs 
 
 Ouvre une **démo interactive des Réglages du script** avec le même style visuel que le vrai panneau. Tu peux tester Classic/Liquid Glass, les couleurs, switches, menus, le verrouillage par fichiers et la restauration des valeurs.
 
+La démo reprend la structure réelle du panneau : un seul écran avec défilement, les blocs dans le même ordre et la barre d’actions fixe en bas.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=fr" %}
 
 [**Ouvrir la démo en plein écran →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=fr)
