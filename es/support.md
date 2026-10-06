@@ -1,3 +1,7 @@
+---
+icon: gear
+---
+
 # Soporte
 
 El soporte oficial de ZBrou se ofrece mediante Discord.

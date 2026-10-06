@@ -1,33 +1,31 @@
 # Permisos y administración
 
-## Abrir el panel
+## Owner
 
-```text
-/frasekilladmin
-```
-
-El acceso recomendado al panel se controla con ACE:
+FraseKill utiliza un único ACE:
 
 ```cfg
 add_ace identifier.license:TU_LICENSE zbrou.frasekill.admin allow
 ```
 
-Si intentas abrir el panel sin permiso, FraseKill muestra la línea ACE preparada con tu identificador para que puedas copiarla.
+Ese ACE da autoridad completa al owner principal. **No** concede automáticamente acceso de uso a FraseKill.
 
-## Accesos de jugadores
+## Administradores delegados
 
-Desde la pestaña **Accesos** puedes conceder acceso a jugadores online por ID o usando un identificador compatible. El permiso persistente se guarda con un identificador estable, no con el ID temporal de sesión.
+Desde el panel, el owner puede crear admins y dar permisos individuales: ver perfiles, dar/quitar accesos, editar/restablecer frases, eliminar perfiles, enviar mensajes, editar normas, gestionar palabras bloqueadas y configurar el script.
 
-Los accesos pueden ser permanentes o tener duración en minutos, horas, días, semanas, meses o años.
+Los permisos de admin se guardan en SQL y están separados del acceso normal de jugadores.
 
-## Jobs y grupos
+## Modos de acceso de jugadores
 
-Los grupos disponibles dependen de `Config.GroupAccess` en `config_server.lua`. Puedes habilitar Jobs, GuilleGangs V2, gangs de QB/Qbox y resolvers custom. También se pueden exigir grados mínimos.
+`Config.Access.Mode` solo admite:
 
-## Frases
+- `managed` — accesos de jugadores/jobs/grupos gestionados por FraseKill.
+- `managed_tebex` — lo anterior más entitlements activos de Tebex.
+- `custom` — tu `Config.Access.CustomCheck` server-side.
 
-La pestaña **Frases** permite buscar usuarios, abrir detalles, editar presets, resetear o eliminar configuraciones, conceder/quitar acceso manual, guardar notas internas y enviar un mensaje si el jugador está conectado.
+No existe modo ACE para usar FraseKill.
 
-## Seguridad
+## Acceso temporal
 
-Todas las acciones importantes se validan de nuevo en servidor. No confíes en permisos de NUI o cliente como única protección.
+Los accesos gestionados pueden ser permanentes o temporales. La caducidad se valida server-side. Si otra fuente válida sigue dando acceso, FraseKill no avisa incorrectamente de que el jugador lo ha perdido por completo.

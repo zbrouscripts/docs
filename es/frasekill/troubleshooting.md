@@ -2,40 +2,37 @@
 
 ## `/frasekill` no abre
 
-- Comprueba que el jugador tenga acceso efectivo.
-- Revisa `/frasekillstatus` como administrador.
-- Mira F8 y la consola del servidor por errores.
-
-## La base de datos no crea tablas
-
-- Verifica que `oxmysql` esté iniciado antes de `zbrou_frasekill`.
-- Comprueba las credenciales de tu base de datos.
-- Si no quieres creación automática, ejecuta `sql/install.sql` manualmente.
+- Confirma que el jugador tiene acceso efectivo.
+- Revisa `Config.Access.Mode`.
+- Ejecuta `/frasekillstatus` como admin.
+- Revisa F8 y consola del servidor.
 
 ## El panel admin no abre
 
-Añade el ACE correcto en `server.cfg` y reinicia el recurso:
+Comprueba el ACE del owner y reinicia después de cambiarlo:
 
 ```cfg
 add_ace identifier.license:TU_LICENSE zbrou.frasekill.admin allow
 ```
 
-## La frase aparece detrás de otra NUI
+Los admins delegados se gestionan desde el panel y no necesitan un ACE de uso de jugador.
 
-Aumenta `Config.NuiZIndex` solo si otro recurso fullscreen se está dibujando por encima.
+## Ajustes del script aparece en gris/bloqueado
 
-## La FraseKill no desaparece al revivir
+Es normal si está seleccionado **Archivos de configuración**. El owner debe cambiar a **Panel de administración** para editar desde la UI.
 
-- Revisa `Config.Display.Mode`.
-- Comprueba qué adapter detecta `/frasekillstatus`.
-- `FailsafeSeconds` actúa como límite de seguridad en `death_state`.
+## Detecta mal el ambulance
 
-## Tebex no concede acceso
+Ejecuta `/frasekillstatus`, revisa `Config.Death.Preferred` y confirma el nombre real del recurso. Puedes forzar `Config.Death.Adapter` o usar el check server-side personalizado.
 
-- Comprueba `Config.Tebex.Enabled`.
-- El comando debe ejecutarse desde consola/Tebex, no desde un jugador.
-- Verifica que el nombre del plan coincida exactamente con la clave configurada.
+## Faltan tablas
 
-## Necesito ayuda
+Inicia `oxmysql` primero. Si AutoCreate está desactivado, aplica los SQL correspondientes de `sql/`.
 
-Consulta **Soporte** para entrar al Discord oficial.
+## Tebex no da acceso
+
+Comprueba `Config.Tebex.Enabled`, usa `managed_tebex`, revisa la clave del plan y asegúrate de que el comando lo ejecuta Tebex/consola.
+
+## Los colores se ven mal
+
+Usa los selectores separados de detalles/fondo/base. Cada color tiene reset individual y el owner puede usar **Restablecer predeterminado** para borrar todos los overrides de Ajustes del script.

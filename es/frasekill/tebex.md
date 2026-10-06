@@ -1,49 +1,36 @@
 # Tebex y caducidades
 
-FraseKill puede entregar acceso automáticamente mediante comandos de servidor de Tebex.
+Tebex es opcional y se procesa server-side. Usa `Config.Access.Mode = 'managed_tebex'` si quieres los accesos gestionados normales **más** los entitlements activos de Tebex.
 
-## Activar Tebex
-
-En `config_server.lua`:
+Actívalo en `config_server.lua`:
 
 ```lua
 Config.Tebex.Enabled = true
 ```
 
-Define los planes que quieras:
-
 ```lua
 Plans = {
-    week = { Label = '1 semana', Days = 7 },
-    month = { Label = '1 mes', Days = 30 },
-    permanent = { Label = 'Permanente', Permanent = true }
+    week = { Label = '1 week', Days = 7 },
+    month = { Label = '1 month', Days = 30 },
+    year = { Label = '1 year', Days = 365 },
+    permanent = { Label = 'Permanent', Permanent = true }
 }
 ```
 
-También puedes utilizar minutos, horas, semanas, meses o años.
-
-## Comando de compra o renovación
-
-En el paquete de Tebex:
+## Compra / renovación
 
 ```text
 frasekill_tebex {id} month {transaction}
 ```
 
-`month` debe coincidir con la clave del plan. Las renovaciones se acumulan sobre el tiempo restante y cada transacción queda registrada por separado.
+Usa el mismo comando para renovar. Las renovaciones temporales amplían el tiempo restante y cada transacción queda registrada para evitar duplicados.
 
-## Reembolso o chargeback
+## Reembolso / chargeback
 
 ```text
 frasekill_tebex_revoke {id} {transaction}
 ```
 
-Este comando revoca esa transacción concreta sin eliminar otras compras válidas del mismo jugador.
+No uses revoke para una cancelación normal si el acceso debe seguir activo hasta terminar el periodo pagado. Los planes temporales caducan solos.
 
-## Caducidad normal
-
-Los planes temporales caducan automáticamente. No necesitas ejecutar `revoke` cuando simplemente termina el periodo pagado.
-
-## Avisos
-
-`Config.ExpiryNotifications` controla los avisos previos a la caducidad. Si el jugador mantiene acceso por otro origen, como job o ACE, FraseKill evita avisar como si fuera a perder totalmente el acceso.
+Los comandos de Tebex solo aceptan ejecución desde consola. FraseKill no guarda una API key de Tebex en la NUI.

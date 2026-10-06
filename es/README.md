@@ -1,3 +1,7 @@
+---
+icon: house
+---
+
 # Documentación de ZBrou Scripts
 
 Documentación oficial de los recursos de **ZBrou** para FiveM.

@@ -1,36 +1,20 @@
 # Personalización
 
-El editor de FraseKill permite configurar cada uno de los 3 presets de forma independiente.
+Cada jugador tiene 3 slots completos de FraseKill. Cada slot guarda su propia frase, color, brillo, tipografía, tamaño, posición, animación, velocidad y estilo del nombre del killer.
 
-## Por preset
+## Fijo y aleatorio
 
-Cada slot puede guardar:
+- **Fijo** usa siempre el slot seleccionado.
+- **Aleatorio** cambia entre los slots habilitados que tengan una frase válida, para que distintas kills puedan mostrar mensajes diferentes.
 
-- Frase.
-- Color del texto.
-- Brillo, color e intensidad.
-- Tipografía.
-- Tamaño.
-- Posición horizontal y vertical.
-- Animación y velocidad.
-- Mostrar u ocultar `JUGADOR TE MATÓ`.
-- Color, tipografía, tamaño y alineación del texto del killer.
-- Participación en el modo aleatorio.
+## Preview
 
-## Vista previa
+La preview permite mover y diseñar la frase antes de guardarla. El botón de repetir solo vuelve a reproducir la animación en el editor; no crea un loop durante una kill real.
 
-La preview permite arrastrar la FraseKill directamente dentro del marco y cambiar entre 16:9, 16:10, 4:3, 5:4 y 21:9. El botón de repetir animación solo vuelve a reproducir la animación dentro de la preview; no hace que se repita durante una kill real.
+## Fuentes y animaciones
 
-## Copiar presets
+Incluye 100 tipografías y 25 animaciones más `Ninguna`. La animación/velocidad de la frase y del nombre del killer son independientes.
 
-Puedes copiar una configuración completa de un slot a otro y después modificar solo lo necesario.
+## Normas
 
-## Colores del menú
-
-Los colores generales de la interfaz se agrupan al final de `web/styles.css` dentro del bloque:
-
-```css
-/* ZBROU FRASEKILL THEME */
-```
-
-Así puedes cambiar la apariencia sin modificar JavaScript.
+`View rules` está disponible desde el editor principal. Las normas y palabras bloqueadas se validan server-side.
