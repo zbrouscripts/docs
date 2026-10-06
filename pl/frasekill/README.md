@@ -1,18 +1,24 @@
+---
+icon: skull
+---
+
 # FraseKill dla FiveM
 
-**ZBrou FraseKill** pozwala graczom personalizować wiadomość wyświetlaną ofierze po zabójstwie. Zasób jest przeznaczony zarówno dla serwerów PvP, jak i roleplay, a ustawienia są trwale zapisywane w bazie danych.
+**ZBrou FraseKill** pozwala każdemu graczowi utworzyć własną frazę po killu i wybrać jej wygląd.
+
+Zmiany zapisują się automatycznie, więc frazy i preferencje zostają po ponownym wejściu na serwer.
 
 ## Najważniejsze funkcje
 
-- 3 pełne presety na gracza.
-- Tryb stały lub losowy pomiędzy włączonymi presetami.
-- 100 czcionek i wiele animacji z regulowaną prędkością.
-- Konfigurowalny kolor, poświata, rozmiar, pozycja i tekst killera.
-- Podgląd na żywo dla różnych proporcji ekranu.
-- Trwały dostęp przez gracza, job, gang/grupę, ACE lub Tebex.
-- Dostęp stały lub czasowy z powiadomieniami o wygaśnięciu.
-- Wbudowany panel administracyjny.
-- Opcjonalne logi Discord przez webhook.
-- Pamięć podręczna RAM ograniczająca liczbę zapytań SQL podczas killów.
-
-Zacznij od **Instalacji**, a następnie przejdź do **Konfiguracji**.
+- 3 sloty FraseKill na gracza.
+- Tryb stały lub losowy.
+- 100 czcionek i 25 animacji.
+- Kolory, poświata, rozmiar, pozycja i szybkość.
+- Własny wygląd nazwy killera.
+- Podgląd przed zapisaniem.
+- Classic i opcjonalny Liquid Glass.
+- 8 języków.
+- Zarządzany dostęp z opcjonalnym Tebex.
+- Panel admina z oddzielnymi uprawnieniami.
+- Zasady i blokowane słowa.
+- Obsługa wielu ambulance jobów.

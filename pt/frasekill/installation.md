@@ -1,41 +1,41 @@
 # Instalação
 
-## Início rápido
+## O que precisas
 
-1. Instala e inicia o `oxmysql`.
-2. Adiciona `zbrou_frasekill` ao servidor.
-3. Revê as permissões e a configuração antes de abrir o servidor ao público.
-4. Adiciona ao `server.cfg`:
+- Um servidor FiveM.
+- O recurso `oxmysql` no servidor.
+- ESX, QBCore e Qbox são opcionais. FraseKill também funciona sem framework.
+- `zbrou_utils` não é necessário.
+
+## Adicionar FraseKill ao servidor
+
+1. Coloca a pasta nos recursos e mantém o nome `zbrou_frasekill`.
+2. No `server.cfg`, confirma que `oxmysql` aparece antes de FraseKill:
 
 ```cfg
 ensure oxmysql
 ensure zbrou_frasekill
 ```
 
-5. Reinicia o recurso ou o servidor.
+3. A SQL necessária é preparada automaticamente na primeira vez que FraseKill inicia. O ficheiro `sql/install.sql` também está incluído caso prefiras prepará-la manualmente.
+4. Reinicia o recurso ou o servidor.
 
-O FraseKill cria e migra automaticamente as tabelas quando `Config.Storage.AutoCreate = true`, que é o valor predefinido. Para uma instalação manual da base de dados, também podes executar `sql/install.sql`.
-
-## Primeiro administrador
-
-Executa:
-
-```text
-/frasekilladmin
-```
-
-Se ainda não tiveres permissão, o menu mostra a linha ACE exata para copiar para o `server.cfg`. Também podes adicioná-la manualmente:
+## Dar acesso ao owner
 
 ```cfg
 add_ace identifier.license:TUA_LICENSE zbrou.frasekill.admin allow
 ```
 
-Reinicia o recurso depois de alterar permissões ACE.
+Se executares `/frasekilladmin` sem permissão, o próprio script mostra a linha exata que deves copiar.
 
-## Verificação
+## Testar durante a configuração
 
-- `/frasekill` abre o editor quando o jogador tem acesso.
-- `/frasekilladmin` abre o painel de administração.
-- `/frasekillstatus` mostra o diagnóstico aos administradores.
+`/frasekilltest` vem desativado na versão pública.
 
-`/frasekilltest` é apenas para desenvolvimento e vem desativado na versão pública.
+Em `config.lua`, procura `Config.Developer` e muda apenas:
+
+```lua
+Enabled = true
+```
+
+Mantém `RequireAdmin = true`. Quando terminares, volta a deixar `Enabled = false`.

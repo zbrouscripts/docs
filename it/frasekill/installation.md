@@ -1,41 +1,33 @@
 # Installazione
 
-## Avvio rapido
+## Cosa serve
 
-1. Installa e avvia `oxmysql`.
-2. Aggiungi `zbrou_frasekill` al server.
-3. Controlla permessi e configurazione prima di aprire il server al pubblico.
-4. Aggiungi a `server.cfg`:
+- Un server FiveM.
+- La risorsa `oxmysql` sul server.
+- ESX, QBCore e Qbox sono opzionali. FraseKill funziona anche senza framework.
+- `zbrou_utils` non è necessario.
+
+## Aggiungere FraseKill
+
+1. Metti la cartella nelle risorse e mantieni il nome `zbrou_frasekill`.
+2. In `server.cfg`, assicurati che `oxmysql` sia prima di FraseKill:
 
 ```cfg
 ensure oxmysql
 ensure zbrou_frasekill
 ```
 
-5. Riavvia la risorsa o il server.
+3. La SQL necessaria viene preparata automaticamente al primo avvio. È incluso anche `sql/install.sql` per chi preferisce farlo manualmente.
+4. Riavvia la risorsa o il server.
 
-FraseKill crea e migra automaticamente le tabelle quando `Config.Storage.AutoCreate = true`, valore predefinito. Se preferisci un’installazione manuale del database puoi eseguire anche `sql/install.sql`.
-
-## Primo amministratore
-
-Esegui:
-
-```text
-/frasekilladmin
-```
-
-Se non hai ancora i permessi, il menu mostra la riga ACE esatta da copiare in `server.cfg`. Puoi anche aggiungerla manualmente:
+## Accesso owner
 
 ```cfg
 add_ace identifier.license:TUA_LICENSE zbrou.frasekill.admin allow
 ```
 
-Riavvia la risorsa dopo aver modificato i permessi ACE.
+`/frasekilladmin` può mostrarti la riga esatta da copiare se non hai ancora il permesso.
 
-## Verifica
+## Strumento di test
 
-- `/frasekill` apre l’editor quando il giocatore ha accesso.
-- `/frasekilladmin` apre il pannello di amministrazione.
-- `/frasekillstatus` mostra la diagnostica agli amministratori.
-
-`/frasekilltest` è solo per sviluppo ed è disattivato nella release pubblica.
+`/frasekilltest` è disattivato di default. In `config.lua`, cerca `Config.Developer` e imposta `Enabled = true`. Lascia `RequireAdmin = true`, poi rimetti `Enabled = false` quando hai finito.

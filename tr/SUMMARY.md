@@ -1,0 +1,17 @@
+# Summary
+
+* [Ana sayfa](README.md)
+* [FraseKill](frasekill/README.md)
+  * [Kurulum](frasekill/installation.md)
+  * [Yapılandırma](frasekill/configuration.md)
+  * [Script ayarları](frasekill/script-settings.md)
+    * [Arayüz ve görünüm](frasekill/script-settings/interface.md)
+    * [FraseKill varsayılanları](frasekill/script-settings/frasekill.md)
+    * [Erişim ve Tebex](frasekill/script-settings/access-tebex.md)
+    * [Ölüm algılama](frasekill/script-settings/death-detection.md)
+    * [Kurallar ve bildirimler](frasekill/script-settings/rules-notifications.md)
+  * [Yetkiler ve yönetim](frasekill/permissions-admin.md)
+  * [Medical uyumluluğu](frasekill/medical-compatibility.md)
+  * [Exports](frasekill/exports.md)
+  * [Sorun giderme](frasekill/troubleshooting.md)
+* [Destek](support.md)

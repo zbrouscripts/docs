@@ -1,41 +1,33 @@
 # Installation
 
-## Démarrage rapide
+## Ce qu'il faut
 
-1. Installez et démarrez `oxmysql`.
-2. Ajoutez `zbrou_frasekill` à votre serveur.
-3. Vérifiez les permissions et la configuration avant d’ouvrir le serveur au public.
-4. Ajoutez dans `server.cfg` :
+- Un serveur FiveM.
+- La ressource `oxmysql` sur le serveur.
+- ESX, QBCore et Qbox sont optionnels. FraseKill fonctionne aussi sans framework.
+- `zbrou_utils` n'est pas nécessaire.
+
+## Ajouter FraseKill
+
+1. Place le dossier dans tes ressources et garde le nom `zbrou_frasekill`.
+2. Dans `server.cfg`, vérifie que `oxmysql` est avant FraseKill :
 
 ```cfg
 ensure oxmysql
 ensure zbrou_frasekill
 ```
 
-5. Redémarrez la ressource ou le serveur.
+3. La SQL nécessaire est préparée automatiquement au premier démarrage. Le fichier `sql/install.sql` est également inclus pour une installation manuelle.
+4. Redémarre la ressource ou le serveur.
 
-FraseKill crée et migre automatiquement ses tables lorsque `Config.Storage.AutoCreate = true`, valeur par défaut. Pour une installation manuelle, vous pouvez aussi exécuter `sql/install.sql`.
-
-## Premier administrateur
-
-Exécutez :
-
-```text
-/frasekilladmin
-```
-
-Si vous n’avez pas encore la permission, le menu affiche la ligne ACE exacte à copier dans `server.cfg`. Vous pouvez aussi l’ajouter manuellement :
+## Accès owner
 
 ```cfg
 add_ace identifier.license:VOTRE_LICENSE zbrou.frasekill.admin allow
 ```
 
-Redémarrez la ressource après toute modification ACE.
+`/frasekilladmin` peut aussi afficher la ligne exacte à copier si tu n'as pas encore la permission.
 
-## Vérification
+## Outil de test
 
-- `/frasekill` ouvre l’éditeur si le joueur a accès.
-- `/frasekilladmin` ouvre le panneau d’administration.
-- `/frasekillstatus` affiche le diagnostic aux administrateurs.
-
-`/frasekilltest` est réservé au développement et désactivé dans la version publique.
+`/frasekilltest` est désactivé par défaut. Dans `config.lua`, cherche `Config.Developer` et mets `Enabled = true`. Garde `RequireAdmin = true`, puis remets `Enabled = false` quand tu as terminé.

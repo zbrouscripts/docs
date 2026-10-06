@@ -1,41 +1,33 @@
 # Kurulum
 
-## Hızlı başlangıç
+## Gerekenler
 
-1. `oxmysql` kurun ve başlatın.
-2. `zbrou_frasekill` kaynağını sunucunuza ekleyin.
-3. Sunucuyu oyunculara açmadan önce izinleri ve ayarları kontrol edin.
-4. `server.cfg` dosyasına ekleyin:
+- FiveM sunucusu.
+- Sunucuda `oxmysql` kaynağı.
+- ESX, QBCore ve Qbox isteğe bağlıdır. FraseKill frameworksüz de çalışır.
+- `zbrou_utils` gerekli değildir.
+
+## Sunucuya ekleme
+
+1. Klasörü resources içine koy ve adını `zbrou_frasekill` olarak bırak.
+2. `server.cfg` içinde `oxmysql` FraseKill'den önce olmalı:
 
 ```cfg
 ensure oxmysql
 ensure zbrou_frasekill
 ```
 
-5. Kaynağı veya sunucuyu yeniden başlatın.
+3. Gerekli SQL ilk çalıştırmada otomatik hazırlanır. Manuel kurulum isteyenler için `sql/install.sql` dosyası da bulunur.
+4. Kaynağı veya sunucuyu yeniden başlat.
 
-`Config.Storage.AutoCreate = true` varsayılan olarak açıktır ve FraseKill gerekli tabloları otomatik oluşturur/günceller. Manuel kurulum isterseniz `sql/install.sql` dosyasını da çalıştırabilirsiniz.
-
-## İlk yönetici
-
-Şunu çalıştırın:
-
-```text
-/frasekilladmin
-```
-
-Henüz izniniz yoksa menü, `server.cfg` içine kopyalamanız gereken ACE satırını gösterir. Manuel örnek:
+## Owner erişimi
 
 ```cfg
-add_ace identifier.license:SENIN_LICENSE zbrou.frasekill.admin allow
+add_ace identifier.license:LICENSE zbrou.frasekill.admin allow
 ```
 
-ACE değişikliklerinden sonra kaynağı yeniden başlatın.
+Yetkin yoksa `/frasekilladmin` kopyalaman gereken satırı gösterebilir.
 
-## Kontrol
+## Test aracı
 
-- `/frasekill` erişimi olan oyuncuda editörü açar.
-- `/frasekilladmin` yönetim panelini açar.
-- `/frasekillstatus` yöneticilere tanılama bilgisi gösterir.
-
-`/frasekilltest` yalnızca geliştirme içindir ve herkese açık sürümde kapalıdır.
+`/frasekilltest` varsayılan olarak kapalıdır. `config.lua` içindeki `Config.Developer` bölümünde `Enabled = true` yap. `RequireAdmin = true` kalsın; işin bitince tekrar `Enabled = false` yap.

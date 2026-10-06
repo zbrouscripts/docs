@@ -1,18 +1,24 @@
+---
+icon: skull
+---
+
 # FiveM için FraseKill
 
-**ZBrou FraseKill**, oyuncuların bir kill sonrasında kurbanın göreceği mesajı özelleştirmesini sağlar. Kaynak PvP ve roleplay sunucuları için tasarlanmıştır ve ayarları veritabanında kalıcı olarak saklar.
+**ZBrou FraseKill**, oyuncuların kendi kill cümlelerini oluşturmasını ve başka bir oyuncuyu öldürdüklerinde nasıl görüneceğini seçmesini sağlar.
+
+Değişiklikler otomatik kaydedilir; oyuncu tekrar girdiğinde cümleleri ve tercihleri korunur.
 
 ## Başlıca özellikler
 
-- Oyuncu başına 3 tam preset.
-- Etkin presetler arasında sabit veya rastgele mod.
-- 100 yazı tipi ve ayarlanabilir hızlara sahip çok sayıda animasyon.
-- Renk, glow, boyut, konum ve killer metni ayarları.
-- Farklı ekran oranları için canlı önizleme.
-- Oyuncu, job, gang/grup, ACE veya Tebex üzerinden kalıcı erişim.
-- Süresiz veya süreli erişim ve süre sonu uyarıları.
-- Dahili yönetim paneli.
-- İsteğe bağlı Discord webhook logları.
-- Kill sırasında sürekli SQL sorgusu yapılmasını önleyen bellek önbelleği.
-
-Önce **Kurulum**, ardından **Yapılandırma** bölümünü kullanın.
+- Oyuncu başına 3 FraseKill slotu.
+- Sabit veya rastgele mod.
+- 100 yazı tipi ve 25 animasyon.
+- Renk, parlama, boyut, konum ve hız.
+- Özelleştirilebilir killer adı.
+- Kaydetmeden önce önizleme.
+- Classic ve isteğe bağlı Liquid Glass.
+- 8 dil.
+- İsteğe bağlı Tebex destekli yönetilen erişim.
+- Ayrı admin yetkileri.
+- Kurallar ve engellenen kelimeler.
+- Birçok ambulance script ile uyumluluk.
