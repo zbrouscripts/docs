@@ -1,26 +1,24 @@
 # Compatibilidad médica
 
-Se recomienda `Config.Death.Adapter = 'auto'`. FraseKill revisa `Config.Death.Preferred` y usa el primer sistema compatible que esté iniciado.
+En la mayoría de servidores no tienes que configurar nada: deja la detección en **Auto** y FraseKill intentará reconocer el ambulance job que estés usando.
 
-Adaptadores incluidos:
+## Compatibles
 
-- Wasabi Ambulance V2 — `wasabi_ambulance_v2`
-- Wasabi Ambulance V1 — `wasabi_ambulance`
-- Brutal Ambulance Job — `brutal_ambulancejob`
-- ARS Ambulance Job — `ars_ambulancejob`
-- TK Ambulance Job — `tk_ambulancejob`
-- Qbox Medical — `qbx_medical`
-- Qbox Ambulance — `qbx_ambulancejob`
-- QB Ambulance — `qb-ambulancejob` / `qb_ambulancejob`
-- ESX Ambulance — `esx_ambulancejob`
-- AS Ambulance — `as-ambulance`
-- Sky Ambulance — `sky_ambulancejob`
-- AK47 Ambulance — `ak47_ambulancejob`
-- P Ambulance — `p_ambulancejob`
-- Muerte nativa standalone
+- Wasabi Ambulance V2
+- Wasabi Ambulance V1
+- Brutal Ambulance Job
+- ARS Ambulance Job
+- TK Ambulance Job
+- Qbox Medical
+- Qbox Ambulance
+- QB Ambulance
+- ESX Ambulance
+- AS Ambulance
+- Sky Ambulance Job
+- AK47 Ambulance Job
+- P Ambulance
+- Servidores sin ambulance job
 
-`TriggerStage` puede ser `incapacitated` o `dead`. Algunos medical distinguen ambas fases y otros solo exponen un estado combinado.
+Si tienes varios medical instalados o FraseKill detecta el incorrecto, puedes elegir uno manualmente desde **Ajustes del script → Detección de muerte**.
 
-Para un medical privado/no listado usa `Config.DeathServer.CustomDeadCheck` con estado/export **server-side** en caché. No uses un booleano del cliente como prueba de muerte.
-
-`/frasekillstatus` muestra los recursos detectados. Prueba siempre la combinación exacta framework + ambulance antes de producción.
+Si utilizas un medical que no aparece en la lista, FraseKill también permite conectarlo mediante una comprobación personalizada.

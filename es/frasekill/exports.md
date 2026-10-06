@@ -1,5 +1,9 @@
 # Exports
 
+{% hint style="info" %}
+Esta página es solo para usuarios avanzados que quieran conectar FraseKill con otro script. Si solo quieres instalar y configurar FraseKill, puedes ignorarla.
+{% endhint %}
+
 ## Servidor
 
 ```lua
@@ -20,5 +24,3 @@ exports['zbrou_frasekill']:ShowFraseKill(payload)
 exports['zbrou_frasekill']:HideFraseKill()
 exports['zbrou_frasekill']:GetDetectedAdapter()
 ```
-
-Para medical personalizados, prioriza confirmación de muerte server-side. `SetExternalDeathState` puede ayudar con compatibilidad, pero no debe ser la única prueba de muerte confiable en un servidor público.

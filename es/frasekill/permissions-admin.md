@@ -1,31 +1,48 @@
 # Permisos y administración
 
-## Owner
+## Owner principal
 
-FraseKill utiliza un único ACE:
+El owner es la persona que tiene acceso completo al panel de FraseKill.
+
+Añade una sola línea en tu `server.cfg`:
 
 ```cfg
 add_ace identifier.license:TU_LICENSE zbrou.frasekill.admin allow
 ```
 
-Ese ACE da autoridad completa al owner principal. **No** concede automáticamente acceso de uso a FraseKill.
+Si no sabes cuál es tu license, entra al servidor y ejecuta:
 
-## Administradores delegados
+```text
+/frasekilladmin
+```
 
-Desde el panel, el owner puede crear admins y dar permisos individuales: ver perfiles, dar/quitar accesos, editar/restablecer frases, eliminar perfiles, enviar mensajes, editar normas, gestionar palabras bloqueadas y configurar el script.
+FraseKill te mostrará la línea exacta que debes copiar.
 
-Los permisos de admin se guardan en SQL y están separados del acceso normal de jugadores.
+## Añadir más administradores
 
-## Modos de acceso de jugadores
+No hace falta añadir más líneas ACE.
 
-`Config.Access.Mode` solo admite:
+El owner puede crear administradores directamente desde el panel y decidir qué puede hacer cada uno, por ejemplo:
 
-- `managed` — accesos de jugadores/jobs/grupos gestionados por FraseKill.
-- `managed_tebex` — lo anterior más entitlements activos de Tebex.
-- `custom` — tu `Config.Access.CustomCheck` server-side.
+- ver jugadores;
+- dar o quitar acceso;
+- editar o restablecer FraseKill;
+- gestionar normas y palabras bloqueadas;
+- cambiar los Ajustes del script.
 
-No existe modo ACE para usar FraseKill.
+Ser administrador **no da automáticamente acceso para usar FraseKill como jugador**.
 
-## Acceso temporal
+## Acceso de jugadores
 
-Los accesos gestionados pueden ser permanentes o temporales. La caducidad se valida server-side. Si otra fuente válida sigue dando acceso, FraseKill no avisa incorrectamente de que el jugador lo ha perdido por completo.
+Los accesos se gestionan desde el panel y pueden ser:
+
+- permanentes;
+- por horas;
+- por días;
+- por semanas;
+- por meses;
+- por años.
+
+También puedes dar acceso a jobs o grupos.
+
+Si usas Tebex, consulta **Ajustes del script → Acceso y Tebex**.

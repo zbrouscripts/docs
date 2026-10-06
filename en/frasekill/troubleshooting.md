@@ -2,37 +2,44 @@
 
 ## `/frasekill` does not open
 
-- Confirm the player has effective access.
-- Check `Config.Access.Mode`.
-- Run `/frasekillstatus` as an administrator.
-- Check F8 and server console.
+1. Check that the player has access.
+2. If you are an admin, run `/frasekillstatus`.
+3. Check F8 and the server console for an error.
 
-## Admin panel does not open
+## FraseKill Admin does not open
 
-Verify the owner ACE and restart after changing it:
+Run `/frasekilladmin`.
 
-```cfg
-add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
+If you are not the owner yet, FraseKill will show the line you need to add to `server.cfg`.
+
+## Script settings is grey/locked
+
+**Configuration files** is selected.
+
+Choose **Administration panel** if you want to edit settings from the UI.
+
+## Wrong ambulance job detected
+
+Open **Script settings → Death detection** and try **Auto** first.
+
+If you have several medical resources installed, select the one you actually use.
+
+## SQL problem
+
+FraseKill prepares its tables automatically.
+
+For servers that use a manual database setup, the resource also includes:
+
+```text
+sql/install.sql
 ```
-
-Delegated admins are managed from the panel; they do not need their own player-use ACE.
-
-## Script settings are grey/locked
-
-This is expected when **Configuration files** is selected. The owner must switch to **Administration panel** to edit supported settings in the UI.
-
-## Medical detection is wrong
-
-Run `/frasekillstatus`, check `Config.Death.Preferred` and verify the exact resource name. You can force `Config.Death.Adapter` or use the custom server-side death check.
-
-## Database tables are missing
-
-Start `oxmysql` first. With AutoCreate disabled, apply the appropriate files from `sql/`.
 
 ## Tebex does not grant access
 
-Check `Config.Tebex.Enabled`, use `managed_tebex`, make sure the plan key is correct and ensure the command is executed by Tebex/console, not a player.
+Make sure **Managed access + Tebex** is selected and the plan name matches your configuration.
 
-## UI colours look wrong
+## I changed too many settings and want to start again
 
-Use the separate detail/background/base pickers. Each menu colour has an individual reset icon, and the owner can use global **Restore defaults** to clear all Script settings overrides.
+Use **Restore defaults** in Script settings.
+
+Player phrases, access grants, rules and administrators are not deleted.

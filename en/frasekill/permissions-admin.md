@@ -1,31 +1,29 @@
 # Permissions and administration
 
-## Owner
+## Main owner
 
-FraseKill uses one ACE only:
+The owner has full access to FraseKill Admin.
+
+Add one line to `server.cfg`:
 
 ```cfg
 add_ace identifier.license:YOUR_LICENSE zbrou.frasekill.admin allow
 ```
 
-This ACE gives the main owner full admin authority. It does **not** automatically give player-use access to FraseKill.
+If you do not know your license, join the server and run `/frasekilladmin`. FraseKill will show the exact line you need to copy.
 
-## Delegated administrators
+## Add more administrators
 
-The owner can create administrators inside the panel and grant individual permissions such as viewing profiles, granting/revoking access, editing/resetting phrases, deleting profiles, messaging players, editing rules, managing blocked words and configuring the script.
+You do not need more ACE lines.
 
-Delegated admin permissions are stored in SQL and remain separate from player access.
+The owner can create administrators from the panel and choose what each one can do, such as viewing players, managing access, editing/resetting FraseKill, managing rules and changing Script settings.
 
-## Player access modes
+Being an administrator does **not** automatically give player access to FraseKill.
 
-`Config.Access.Mode` supports only:
+## Player access
 
-- `managed` — access granted by FraseKill player/job/group grants.
-- `managed_tebex` — managed access plus active Tebex entitlements.
-- `custom` — your server-side `Config.Access.CustomCheck`.
+Access can be permanent or limited to hours, days, weeks, months or years.
 
-There is no player-use ACE mode.
+You can also grant access to jobs or groups.
 
-## Temporary access
-
-Managed grants can be permanent or time-limited. Expiry is checked server-side. If another valid source still grants access, FraseKill does not incorrectly report that the player lost all access.
+For Tebex, see **Script settings → Access and Tebex**.
