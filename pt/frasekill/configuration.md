@@ -17,6 +17,8 @@ Cada opção tem um `?` com uma explicação simples.
 
 Abre uma **demo interativa das Definições do script** com o mesmo estilo visual do painel real. Podes testar Classic/Liquid Glass, cores, switches, listas, bloqueio por ficheiros e Restaurar predefinições.
 
+A demo segue a estrutura real do painel: um único ecrã com scroll, blocos pela mesma ordem e a barra de ações fixa em baixo.
+
 {% embed url="https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pt" %}
 
 [**Abrir demo em ecrã inteiro →**](https://raw.githack.com/zbrouscripts/docs/main/site/frasekill/index.html?lang=pt)
